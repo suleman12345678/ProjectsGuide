@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essential Safety | Admin Module Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #d32f2f;
+            --bg: #f8fafc;
+            --surface: rgba(255, 255, 255, 0.9);
+            --glass: rgba(255, 255, 255, 0.75);
+            --sidebar: rgba(255, 255, 255, 0.95);
+            --text: #0f172a;
+            --muted: #475569;
+            --border: rgba(15, 23, 42, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: var(--sidebar);
+            backdrop-filter: blur(10px);
+            padding: 30px 20px;
+            border-right: 1px solid var(--border);
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 50px;
+        }
+
+        .logo i {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-bottom: 8px;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            color: #cbd5e1;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: rgba(211, 47, 47, 0.15);
+            color: white;
+        }
+
+        .nav-links a i {
+            width: 20px;
+        }
+
+        /* Main Content */
+        .content {
+            margin-left: 280px;
+            padding: 40px;
+            width: 100%;
+        }
+
+        .glass-panel {
+            background: var(--surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: var(--primary);
+        }
+
+        .credentials-card {
+            background: rgba(15, 23, 42, 0.05);
+            padding: 25px;
+            border-radius: 16px;
+            margin-top: 30px;
+        }
+
+        .feature-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .reverse {
+            direction: rtl;
+        }
+
+        .reverse .feature-text {
+            direction: ltr;
+        }
+
+        .feature-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .feature-text h2 i {
+            color: var(--primary);
+            font-size: 2.4rem;
+        }
+
+        .feature-image {
+            position: relative;
+            cursor: pointer;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+        }
+
+        .feature-image img {
+            width: 100%;
+            display: block;
+            transition: transform 0.4s;
+        }
+
+        .feature-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(15, 23, 42, 0.18));
+            color: var(--text);
+            padding: 20px;
+            text-align: center;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .feature-image:hover .overlay {
+            opacity: 1;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.7);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 12px;
+        }
+
+        .close-btn {
+            display: block;
+            text-align: center;
+            font-size: 50px;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 240px;
+            }
+
+            .content {
+                margin-left: 240px;
+            }
+
+            .feature-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+                margin-left: 0 !important;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .feature-text h2 {
+                font-size: 1.8rem;
+            }
+
+            .glass-panel {
+                padding: 20px;
+            }
+
+            .feature-section {
+                gap: 30px;
+            }
+
+            .feature-text {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-shield-halved"></i> Admin Module
+            </div>
+            <ul class="nav-links">
+                <li><a href="#intro" class="active"><i class="fa-solid fa-house"></i> Introduction</a></li>
+                <li><a href="#dashboard"><i class="fas fa-store"></i> Dashboards</a></li>
+                <li><a href="#product"><i class="fas fa-box"></i> Products</a></li>
+                <li><a href="#order"><i class="fas fa-shopping-bag"></i>Orders</a></li>
+                <li><a href="#user"><i class="fas fa-store"></i>Users</a></li>
+                <li><a href="#vendor"><i class="fas fa-id-badge"></i>Vendors</a></li>
+                <li><a href="#inventory"><i class="fas fa-boxes"></i>Inventorys</a></li>
+                <li><a href="#setting"><i class="fas fa-cog"></i> Settings</a></li>
+
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="content">
+            <section id="intro" class="glass-panel feature-section">
+
+                <!-- LEFT CONTENT -->
+                <div class="feature-image">
+                    <img src="Images/login.png" alt="Intro Image" onclick="openModal(this.src)">
+                    <div class="overlay">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i> Click to View Full Size
+                    </div>
+                </div>
+
+                <!-- RIGHT IMAGE -->
+                <div class="feature-text">
+                    <h2>
+                        <i class="fa-solid fa-shield-halved"></i>
+                        Essential Safety <span class="highlight">Admin Module</span>
+                    </h2>
+
+                    <p>
+                        Welcome to the comprehensive project guide for the Admin Module of the EFSS.
+                        Explore the system's administrative controls, entity management, and oversight tools below.
+                    </p>
+
+                    <div class="credentials-card" style="margin-top:20px;">
+                        <h3><i class="fa-solid fa-key"></i> Test Credentials</h3>
+                        <ul>
+                            <li><strong>Email:</strong> 1234@gmail.com</li>
+                            <li><strong>Password:</strong> 12345678</li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </section>
+
+            <section id="dashboard" class="glass-panel feature-section">
+                <div class="feature-text">
+                    <h2><i class="fas fa-store"></i> Dashboards</h2>
+                    <p>This screenshot shows an admin dashboard for an “Essential Safety” store. It includes a sidebar
+                        menu (Dashboard, Products, Orders, Users, Vendors, Inventory, and Settings) and a main panel
+                        displaying key stats like total revenue, orders, products, and users. There are alerts for low
+                        stock items, a recent orders section (currently empty), and a categories list (e.g., fire
+                        extinguishers, PPE, electrical safety). A button to add new products is visible at the top.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="Images/dashboards.png" alt="Admin Dashboard" onclick="openModal(this.src)">
+                    <div class="overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> Click to View Full Size</div>
+                </div>
+            </section>
+
+            <section id="product" class="glass-panel feature-section reverse">
+                <div class="feature-text">
+                    <h2><i class="fa-solid fa-box"></i> Products</h2>
+                    <p>The right side of the Products page displays a table listing all items with details such as
+                        product name, vendor, category, price, stock level, and status. It shows 9 products, each marked
+                        as active, with most items flagged as low stock. There are also filters and category tabs above
+                        the table, along with options to search, export data, and add new products.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="Images/products.png" alt="Services Management" onclick="openModal(this.src)">
+                    <div class="overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> Click to View Full Size</div>
+                </div>
+            </section>
+
+            <section id="order" class="glass-panel feature-section">
+                <div class="feature-text">
+                    <h2><i class="fas fa-shopping-bag"></i> Orders</h2>
+                    <p>The right side of the Orders page shows an overview of order activity with summary cards for
+                        revenue, total orders, pending, and in-transit orders—all currently at zero. Below, there are
+                        tabs to filter orders by status (All, Pending, Processing, Shipped, and Delivered). The main
+                        section displays an empty state message indicating that no orders have been placed yet.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="Images/Orders.png" alt="AI Solutions" onclick="openModal(this.src)">
+                    <div class="overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> Click to View Full Size</div>
+                </div>
+            </section>
+
+            <section id="user" class="glass-panel feature-section reverse">
+                <div class="feature-text">
+                    <h2><i class="fas fa-store"></i> Users</h2>
+                    <p>The right side of the Users page displays a searchable and filterable list of registered users.
+                        It includes details such as user name, email, phone number, role (Admin, Vendor, User), and join
+                        date. Each row also has action icons to edit or delete users.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="Images/Users.png" alt="Store Interface" onclick="openModal(this.src)">
+                    <div class="overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> Click to View Full Size</div>
+                </div>
+            </section>
+
+            <section id="vendor" class="glass-panel feature-section">
+                <div class="feature-text">
+                    <h2><i class="fas fa-id-badge"></i> Vendors</h2>
+                    <p>The right side of the Vendors page shows a vendor overview with summary cards for total vendors,
+                        total items, safety items, active/inactive items, and recently added items. Below, there is a
+                        search bar to find vendors and a list displaying each vendor’s store name, email, join date, and
+                        number of items they manage.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="Images/Vendors.png" alt="AI Solutions" onclick="openModal(this.src)">
+                    <div class="overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> Click to View Full Size</div>
+                </div>
+            </section>
+
+            <section id="inventory" class="glass-panel feature-section reverse">
+                <div class="feature-text">
+                    <h2><i class="fas fa-boxes"></i>Inventorys</h2>
+                    <p>The right side of the Inventory page shows an overview of stock levels with summary cards for
+                        total products, in-stock items, low stock, and out-of-stock items. Below, there is a search bar
+                        and filters (All, Low Stock, Out of Stock), followed by a table listing products with their
+                        category, price, stock quantity, and status—most items currently marked as low stock.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="Images/Inventory.png" alt="Store Interface" onclick="openModal(this.src)">
+                    <div class="overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> Click to View Full Size</div>
+                </div>
+            </section>
+
+            <section id="setting" class="glass-panel feature-section">
+                <div class="feature-text">
+                    <h2><i class="fas fa-cog"></i> Settings</h2>
+                    <p>The right side of the Settings page shows account settings for the admin, including profile
+                        details and security options. It displays the user’s profile image, name, and role, along with
+                        editable fields for full name and phone number, while the email is fixed. There is also an
+                        option to set a new password and a “Save Changes” button to update the information.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="Images/Settings.png" alt="AI Solutions" onclick="openModal(this.src)">
+                    <div class="overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> Click to View Full Size</div>
+                </div>
+            </section>
+
+
+
+
+
+
+
+
+
+
+        </main>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <img class="modal-content" id="modalImg">
+        <span class="close-btn" onclick="closeModal()">×</span>
+    </div>
+
+    <script>
+        function openModal(src) {
+            document.getElementById('modalImg').src = src;
+            document.getElementById('imageModal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+        // Close modal when clicking outside the image
+        document.getElementById('imageModal').addEventListener('click', function (e) {
+            if (e.target === this) closeModal();
+        });
+    </script>
+    <script>
+        if (window !== window.top) {
+            document.querySelector('.sidebar').style.display = 'none';
+            document.querySelector('.content').style.marginLeft = '0';
+        }
+    </script>
+</body>
+
+</html>

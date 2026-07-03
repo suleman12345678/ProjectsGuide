@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essential Safety | Admin Module Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #d32f2f;
+            --bg: #f8fafc;
+            --surface: rgba(255, 255, 255, 0.9);
+            --glass: rgba(255, 255, 255, 0.75);
+            --sidebar: rgba(255, 255, 255, 0.95);
+            --text: #0f172a;
+            --muted: #475569;
+            --border: rgba(15, 23, 42, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: var(--sidebar);
+            backdrop-filter: blur(10px);
+            padding: 30px 20px;
+            border-right: 1px solid var(--border);
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 50px;
+        }
+
+        .logo i {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-bottom: 8px;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            color: #cbd5e1;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: rgba(211, 47, 47, 0.15);
+            color: white;
+        }
+
+        .nav-links a i {
+            width: 20px;
+        }
+
+        /* Main Content */
+        .content {
+            margin-left: 280px;
+            padding: 40px;
+            width: 100%;
+        }
+
+        .glass-panel {
+            background: var(--surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: var(--primary);
+        }
+
+        .credentials-card {
+            background: rgba(15, 23, 42, 0.05);
+            padding: 25px;
+            border-radius: 16px;
+            margin-top: 30px;
+        }
+
+        .feature-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .reverse {
+            direction: rtl;
+        }
+
+        .reverse .feature-text {
+            direction: ltr;
+        }
+
+        .feature-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .feature-text h2 i {
+            color: var(--primary);
+            font-size: 2.4rem;
+        }
+
+        .feature-image {
+            position: relative;
+            cursor: pointer;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+        }
+
+        .feature-image img {
+            width: 100%;
+            display: block;
+            transition: transform 0.4s;
+        }
+
+        .feature-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(15, 23, 42, 0.18));
+            color: var(--text);
+            padding: 20px;
+            text-align: center;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .feature-image:hover .overlay {
+            opacity: 1;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.7);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 12px;
+        }
+
+        .close-btn {
+            display: block;
+            text-align: center;
+            font-size: 50px;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 240px;
+            }
+
+            .content {
+                margin-left: 240px;
+            }
+
+            .feature-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+                margin-left: 0 !important;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .feature-text h2 {
+                font-size: 1.8rem;
+            }
+
+            .glass-panel {
+                padding: 20px;
+            }
+
+            .feature-section {
+                gap: 30px;
+            }
+
+            .feature-text {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-shield-halved"></i> Essential Safety
+            </div>
+            <ul class="nav-links">
+                <li><a href="#intro" class="active"><i class="fa-solid fa-house"></i> Introduction</a></li>
+                <li><a href="#dashboard"><i class="fa-solid fa-chart-pie"></i> Dashboard Overview</a></li>
+                <li><a href="#services"><i class="fa-solid fa-list-check"></i> Services Management</a></li>
+                <li><a href="#ai"><i class="fa-solid fa-brain"></i> AI & IoT Solutions</a></li>
+                <li><a href="#store"><i class="fa-solid fa-store"></i> Store Interface</a></li>
+                <li><a href="#about"><i class="fa-solid fa-info-circle"></i> About Us</a></li>
+                <li><a href="#contact"><i class="fa-solid fa-envelope"></i> Contact Management</a></li>
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="content">
+
+            <section id="intro" class="glass-panel hero-section">
+                <h1>Essential Safety</h1>
+                <p>Essential Safety is a professional Facility Management Company that offers complete end-to-end
+                    building maintenance solutions.
+                    They provide 24/7 services including electrical, plumbing, fire safety, security, housekeeping, and
+                    more — acting as a one-stop solution for all facility management needs.
+                    With 15+ years of experience and 5000+ clients, the company emphasizes reliable, round-the-clock
+                    support, especially in emergency and safety services.
+                </p>
+
+            </section>
+
+            <section id="dashboard" class="glass-panel feature-section">
+                <div class="feature-text">
+                    <h2><i class="fa-solid fa-chart-pie"></i> Dashboard Overview</h2>
+                    <p>The central hub for facility management. View real-time status of all buildings, active AMCs,
+                        emergency requests, AI alerts, and key metrics across 5000+ clients.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="images/dashboard.png" alt="Admin Dashboard" onclick="openModal(this.src)">
+                    <div class="overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> Click to View Full Size</div>
+                </div>
+            </section>
+
+            <section id="services" class="glass-panel feature-section reverse">
+                <div class="feature-text">
+                    <h2><i class="fa-solid fa-list-check"></i> Services Management</h2>
+                    <p>Complete control over all facility services: Fire & Safety, Electrical, Plumbing, HVAC, Security,
+                        Housekeeping, Lift/Escalator, Civil Works, and External Maintenance. Add, edit, and track
+                        service tasks.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="images/sevices.png" alt="Services Management" onclick="openModal(this.src)">
+                    <div class="overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> Click to View Full Size</div>
+                </div>
+            </section>
+
+            <section id="ai" class="glass-panel feature-section">
+                <div class="feature-text">
+                    <h2><i class="fa-solid fa-brain"></i> AI-Enabled Safety Solutions</h2>
+                    <p>Monitor and manage AI-powered fire detection (99.9% accuracy), predictive maintenance, smart
+                        evacuation, risk assessment, and automated compliance reports.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="images/Ai enabled.png" alt="AI Solutions" onclick="openModal(this.src)">
+                    <div class="overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> Click to View Full Size</div>
+                </div>
+            </section>
+
+            <section id="store" class="glass-panel feature-section reverse">
+                <div class="feature-text">
+                    <h2><i class="fa-solid fa-store"></i> Store & Orders Interface</h2>
+                    <p>Manage the company store for safety equipment, spare parts, and AMC packages. View customer
+                        orders, wishlists, and profile management interface.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="images/store.png" alt="Store Interface" onclick="openModal(this.src)">
+                    <div class="overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> Click to View Full Size</div>
+                </div>
+            </section>
+
+            <section id="about" class="glass-panel feature-section">
+                <div class="feature-text">
+                    <h2><i class="fa-solid fa-info-circle"></i> About Us Management</h2>
+                    <p>Update company information, achievements (500+ projects, 100% satisfaction), team details, and
+                        key strengths for the public About Us page.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="images/about us.png" alt="About Us" onclick="openModal(this.src)">
+                    <div class="overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> Click to View Full Size</div>
+                </div>
+            </section>
+
+            <section id="contact" class="glass-panel feature-section reverse">
+                <div class="feature-text">
+                    <h2><i class="fa-solid fa-envelope"></i> Contact & Inquiries</h2>
+                    <p>View and manage all incoming contact form submissions, emergency requests, and client messages.
+                        Includes integrated location map and response tools.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="images/contact us.png" alt="Contact Management" onclick="openModal(this.src)">
+                    <div class="overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> Click to View Full Size</div>
+                </div>
+            </section>
+
+
+
+        </main>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <img class="modal-content" id="modalImg">
+        <span class="close-btn" onclick="closeModal()">×</span>
+    </div>
+
+    <script>
+        function openModal(src) {
+            document.getElementById('modalImg').src = src;
+            document.getElementById('imageModal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+        // Close modal when clicking outside the image
+        document.getElementById('imageModal').addEventListener('click', function (e) {
+            if (e.target === this) closeModal();
+        });
+    </script>
+    <script>
+        if (window !== window.top) {
+            document.querySelector('.sidebar').style.display = 'none';
+            document.querySelector('.content').style.marginLeft = '0';
+        }
+    </script>
+</body>
+
+</html>

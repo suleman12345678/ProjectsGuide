@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WaCliy User Guide</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <i class="fa-brands fa-whatsapp logo-icon"></i>
+                <div>
+                    <h1>WaCliy</h1>
+                    <span class="subtitle">Whatsapp Automation</span>
+                </div>
+            </div>
+
+            <ul class="nav-menu">
+                <li class="nav-item active" data-target="intro">
+                    <i class="fa-solid fa-home"></i> Introduction
+                </li>
+                <li class="nav-item" data-target="login">
+                    <i class="fa-solid fa-right-to-bracket"></i> Authentication
+                </li>
+                <li class="nav-item" data-target="dashboard">
+                    <i class="fa-solid fa-gauge"></i> Dashboard Overview
+                </li>
+                <li class="nav-item" data-target="create-session">
+                    <i class="fa-solid fa-plus-circle"></i> Creating Sessions
+                </li>
+                <li class="nav-item" data-target="connection">
+                    <i class="fa-solid fa-qrcode"></i> Connecting Device
+                </li>
+                <li class="nav-item" data-target="chat-interface">
+                    <i class="fa-solid fa-comments"></i> Web Chat
+                </li>
+
+                <li class="nav-title">Developer Tools</li>
+                <li class="nav-item" data-target="api-access">
+                    <i class="fa-solid fa-code"></i> API Access
+                </li>
+                <li class="nav-item" data-target="webhooks">
+                    <i class="fa-solid fa-link"></i> Webhooks
+                </li>
+                <li class="nav-item" data-target="integrations">
+                    <i class="fa-solid fa-puzzle-piece"></i> Integrations
+                </li>
+                <li class="nav-item" data-target="auto-reply">
+                    <i class="fa-solid fa-robot"></i> AI Auto-Reply
+                </li>
+            </ul>
+
+            <div class="sidebar-footer">
+                <p>WaCliy Guide v1.0</p>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Introduction Section -->
+            <section id="intro" class="section active">
+                <div class="header-banner">
+                    <h2>Welcome to WaCliy</h2>
+                    <p>Your ultimate guide to managing multiple WhatsApp sessions.</p>
+                </div>
+                <div class="card-grid">
+                    <div class="feature-card">
+                        <div class="icon-container"><i class="fa-solid fa-layer-group"></i></div>
+                        <h3>Multi-Account</h3>
+                        <p>Manage multiple WhatsApp accounts simultaneously from a single, unified interface.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon-container"><i class="fa-solid fa-bolt"></i></div>
+                        <h3>Real-time</h3>
+                        <p>Enjoy instantaneous message delivery and status updates synchronized across all sessions.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="icon-container"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3>Secure</h3>
+                        <p>Enterprise-grade security ensuring your session data and messages remain private.</p>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <h3>About This Guide</h3>
+                    <p>This comprehensive guide will walk you through the essential operations of WaCliy, from initially
+                        logging into your account to provisioning new WhatsApp sessions via QR code linking.</p>
+                    <button class="primary-btn next-btn" data-next="login">Get Started <i
+                            class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </section>
+
+            <!-- Login Section -->
+            <section id="login" class="section">
+                <header class="section-header">
+                    <h2>Authentication</h2>
+                    <p>How to access your WaCliy portal.</p>
+                </header>
+                <div class="content-split">
+                    <div class="text-content">
+                        <h3>Secure Login Process</h3>
+                        <p>WaCliy utilizes a highly secure authentication portal to protect your WhatsApp sessions. To
+                            access the dashboard, you must provide your registered credentials.</p>
+
+                        <div class="steps-container">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-text">Navigate to the main application URL.</div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-text">Enter your registered email address (e.g.,
+                                    <code>rib@gmail.com</code>).
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-text">Input your secure password. You can use the eye icon to toggle
+                                    visibility.</div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">4</div>
+                                <div class="step-text">Click the <strong>Sign In</strong> button to authenticate.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-content">
+                        <div class="image-wrapper glass-panel">
+                            <img src="images/login.png" alt="WaCliy Login Page">
+                            <div class="image-caption">The WaCliy login portal featuring a dark layout with green
+                                accents.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="section">
+                <header class="section-header">
+                    <h2>Dashboard Overview</h2>
+                    <p>Navigating the main control center.</p>
+                </header>
+                <div class="content-split reverse">
+                    <div class="text-content">
+                        <h3>Your Command Center</h3>
+                        <p>Once authenticated, you will arrive at the main Dashboard. This interface provides an
+                            overview of your active sessions and quick access to core functionalities.</p>
+
+                        <div class="info-box">
+                            <h4><i class="fa-solid fa-compass"></i> Navigation Breakdown</h4>
+                            <ul>
+                                <li><strong>Sidebar Navigation:</strong> Access 'Sessions' or general 'WhatsApp'
+                                    settings from the left panel.</li>
+                                <li><strong>Session List:</strong> View all your previously created sessions, their
+                                    statuses (e.g., Disconnected/Active), and quick action buttons.</li>
+                                <li><strong>User Profile:</strong> Located at the bottom left, manage your account
+                                    settings or access the Admin Panel.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="image-content">
+                        <div class="image-wrapper glass-panel">
+                            <img src="images/dashboard.png" alt="WaCliy Dashboard">
+                            <div class="image-caption">The main dashboard showing navigation and session management.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Creating Session Section -->
+            <section id="create-session" class="section">
+                <header class="section-header">
+                    <h2>Creating Sessions</h2>
+                    <p>Initialize a new WhatsApp instance.</p>
+                </header>
+                <div class="content-split">
+                    <div class="text-content">
+                        <h3>Provisioning a New Instance</h3>
+                        <p>To link a new WhatsApp account, you first need to create a dedicated session container within
+                            WaCliy.</p>
+
+                        <div class="steps-container">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-text">From the dashboard or sidebar, click the prominent <strong>Create
+                                        New Session</strong> button.</div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-text">A prompt will appear requesting a session name. Enter a
+                                    recognizable identifier (e.g., "Support Line" or "Personal Account").</div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-text">Click <strong>Create & Connect</strong> to initialize the
+                                    instance.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-content">
+                        <div class="image-wrapper glass-panel">
+                            <img src="images/create_session.png" alt="Create Session Prompt">
+                            <div class="image-caption">Entering session details to provision a new WhatsApp instance.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Connection Section -->
+            <section id="connection" class="section">
+                <header class="section-header">
+                    <h2>Connecting Device (QR)</h2>
+                    <p>Linking your WhatsApp mobile app to WaCliy.</p>
+                </header>
+                <div class="content-split reverse">
+                    <div class="text-content">
+                        <h3>Establishing Secure Link</h3>
+                        <p>After creating a session, the system will generate a unique QR code. You must scan this code
+                            using the WhatsApp application on your mobile device to authorize the connection.</p>
+
+                        <div class="alert-box warning">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                            <div>
+                                <strong>Time Sensitive:</strong> The generated QR code refreshes automatically every 30
+                                seconds for security purposes. Ensure you scan it promptly.
+                            </div>
+                        </div>
+
+                        <div class="steps-container">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-text">Open WhatsApp on your primary mobile phone.</div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-text">Navigate to <strong>Menu (Android)</strong> or <strong>Settings
+                                        (iOS)</strong> and select <strong>Linked Devices</strong>.</div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-text">Tap the <strong>Link a Device</strong> option. Authenticate if
+                                    prompted by your phone.</div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">4</div>
+                                <div class="step-text">Point your phone's camera at the QR code displayed on the WaCliy
+                                    screen.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-content">
+                        <div class="image-wrapper glass-panel qr-glow">
+                            <img src="images/qr_code.png" alt="QR Code Connection Screen">
+                            <div class="image-caption">The standard connection screen waiting for QR code scan.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chat Interface Section -->
+            <section id="chat-interface" class="section">
+                <header class="section-header">
+                    <h2>Web Chat Interface</h2>
+                    <p>Communicate directly from the WaCliy dashboard.</p>
+                </header>
+                <div class="content-split">
+                    <div class="text-content">
+                        <h3>Real-time Messaging</h3>
+                        <p>WaCliy offers a fully integrated web chat interface, allowing you to send and receive
+                            messages without ever needing your phone.</p>
+
+                        <div class="info-box">
+                            <h4><i class="fa-solid fa-message"></i> Features Overview</h4>
+                            <ul>
+                                <li><strong>Search & Filter:</strong> Quickly find contacts or initiate new
+                                    conversations using the search bar.</li>
+                                <li><strong>Live Status:</strong> View your active connection status and contact
+                                    availability in real-time.</li>
+                                <li><strong>Seamless Sync:</strong> Messages sent from the web interface instantly
+                                    reflect on your linked mobile device.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="image-content">
+                        <div class="image-wrapper glass-panel">
+                            <img src="images/chats.png" alt="WaCliy Web Chat Interface">
+                            <div class="image-caption">The integrated chat dashboard showing a live conversation.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- API Access Section -->
+            <section id="api-access" class="section">
+                <header class="section-header">
+                    <h2>API Access</h2>
+                    <p>Programmatically control your WhatsApp sessions.</p>
+                </header>
+                <div class="content-split">
+                    <div class="text-content">
+                        <h3>REST API Capabilities</h3>
+                        <p>WaCliy provides a robust HTTP API allowing developers to send messages, manage sessions, and
+                            automate workflows externally.</p>
+
+                        <div class="info-box">
+                            <h4><i class="fa-solid fa-key"></i> Authentication</h4>
+                            <p>Authentication is handled via Bearer tokens. Each session generates its own unique
+                                <code>x-api-token</code> which must be included in the headers of your HTTP requests.
+                            </p>
+                            <ul>
+                                <li><strong>Endpoint:</strong> <code>POST /api/send</code></li>
+                                <li><strong>Format:</strong> JSON Payload</li>
+                                <li><strong>Built-in Guides:</strong> The dashboard includes direct integration
+                                    templates for tools like <strong>n8n</strong> and command-line examples using
+                                    <strong>cURL</strong>.
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="image-content">
+                        <div class="image-wrapper glass-panel">
+                            <img src="images/api_access.png" alt="API Token and n8n Setup">
+                            <div class="image-caption">API configuration modal providing n8n and cURL templates.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Webhooks Section -->
+            <section id="webhooks" class="section">
+                <header class="section-header">
+                    <h2>Webhooks</h2>
+                    <p>Real-time event subscriptions.</p>
+                </header>
+                <div class="content-split reverse">
+                    <div class="text-content">
+                        <h3>Receive Incoming Messages</h3>
+                        <p>Configure webhooks to get real-time HTTP POST notifications whenever an event occurs on your
+                            WhatsApp session, such as receiving a new message.</p>
+
+                        <div class="steps-container">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-text">From the session options (three dots), select
+                                    <strong>Webhooks</strong>.
+                                </div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-text">Enter your destination URL (e.g., your generic server endpoint or
+                                    an n8n Webhook node URL).</div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-text">When a message arrives, WaCliy sends a JSON payload containing
+                                    the sender details, message body, session ID, and timestamp.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-content">
+                        <div class="image-wrapper glass-panel">
+                            <img src="images/webhook.png" alt="Webhook Configuration">
+                            <div class="image-caption">Defining a custom webhook URL for incoming messages.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Integrations Section -->
+            <section id="integrations" class="section">
+                <header class="section-header">
+                    <h2>Third-Party Integrations</h2>
+                    <p>Extend WaCliy using external services and web automation tools.</p>
+                </header>
+                <div class="content-split">
+                    <div class="text-content">
+                        <h3>OpenClaw Integration</h3>
+                        <p>Forward messages dynamically to OpenClaw. This integration supports custom headers and
+                            dynamic body payloads utilizing variables like <code>{{message}}</code>,
+                            <code>{{sender_name}}</code>, and <code>{{sender_number}}</code>.
+                        </p>
+                    </div>
+                    <div class="image-content">
+                        <div class="image-wrapper glass-panel">
+                            <img src="images/openclaw.png" alt="OpenClaw Integration Settings">
+                            <div class="image-caption">Configuring OpenClaw with dynamic template variables.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Auto-Reply Section -->
+            <section id="auto-reply" class="section">
+                <header class="section-header">
+                    <h2 style="background: linear-gradient(to right, #22c55e, #10b981); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">AI Auto-Reply System</h2>
+                    <p>Put your WhatsApp on autopilot with intelligent AI assistants.</p>
+                </header>
+                <div class="content-split">
+                    <div class="text-content">
+                        <div class="info-box" style="border-left-color: #22c55e; background: rgba(34, 197, 94, 0.05);">
+                            <h4><i class="fa-solid fa-brain" style="color: #22c55e;"></i> Next-Gen Support</h4>
+                            <p>Automate your customer support or personal responses using state-of-the-art AI language models running directly within WaCliy.</p>
+                        </div>
+
+                        <h3>Retrieval-Augmented Generation (RAG)</h3>
+                        <p>WaCliy's AI isn't simply a basic chatbot. You can provide it with specific context using the built-in Vector Store!</p>
+                        
+                        <div class="steps-container" style="margin-top: 1.5rem;">
+                            <div class="step">
+                                <div class="step-number">1</div>
+                                <div class="step-text"><strong>Model Selection:</strong> Choose from elite OpenAI models including <code>gpt-4o-mini</code> to dictate reasoning capability.</div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">2</div>
+                                <div class="step-text"><strong>Knowledge Base:</strong> Upload business documents (TXT, PDF, MD, CSV) directly to the platform.</div>
+                            </div>
+                            <div class="step">
+                                <div class="step-number">3</div>
+                                <div class="step-text"><strong>Intelligent Reply:</strong> The AI will securely read these files to provide accurate, business-specific context in its automated responses.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-content">
+                        <div class="image-wrapper glass-panel qr-glow">
+                            <img src="images/auto_reply.png" alt="AI Auto Reply Settings">
+                            <div class="image-caption">Uploading documents to the RAG Vector Store to train the AI assistant.</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

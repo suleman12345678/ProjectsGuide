@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essential Safety | Vendor Module Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #d32f2f;
+            --bg: #f8fafc;
+            --surface: rgba(255, 255, 255, 0.9);
+            --glass: rgba(255, 255, 255, 0.75);
+            --sidebar: rgba(255, 255, 255, 0.95);
+            --text: #0f172a;
+            --muted: #475569;
+            --border: rgba(15, 23, 42, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 280px;
+            background: var(--sidebar);
+            backdrop-filter: blur(10px);
+            padding: 30px 20px;
+            border-right: 1px solid var(--border);
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 50px;
+        }
+
+        .logo i {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-bottom: 8px;
+        }
+
+        .nav-links a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 20px;
+            color: #cbd5e1;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: rgba(211, 47, 47, 0.15);
+            color: white;
+        }
+
+        .nav-links a i {
+            width: 20px;
+        }
+
+        /* Main Content */
+        .content {
+            margin-left: 280px;
+            padding: 40px;
+            width: 100%;
+        }
+
+        .glass-panel {
+            background: var(--surface);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+        }
+
+        .hero-section h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            color: var(--primary);
+        }
+
+        .credentials-card {
+            background: rgba(15, 23, 42, 0.05);
+            padding: 25px;
+            border-radius: 16px;
+            margin-top: 30px;
+        }
+
+        .feature-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .reverse {
+            direction: rtl;
+        }
+
+        .reverse .feature-text {
+            direction: ltr;
+        }
+
+        .feature-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .feature-text h2 i {
+            color: var(--primary);
+            font-size: 2.4rem;
+        }
+
+        .feature-image {
+            position: relative;
+            cursor: pointer;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(15, 23, 42, 0.08);
+        }
+
+        .feature-image img {
+            width: 100%;
+            display: block;
+            transition: transform 0.4s;
+        }
+
+        .feature-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(15, 23, 42, 0.18));
+            color: var(--text);
+            padding: 20px;
+            text-align: center;
+            opacity: 0;
+            transition: 0.3s;
+        }
+
+        .feature-image:hover .overlay {
+            opacity: 1;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.7);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 12px;
+        }
+
+        .close-btn {
+            display: block;
+            text-align: center;
+            font-size: 50px;
+            color: #fff;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        @media (max-width: 992px) {
+            .sidebar {
+                width: 240px;
+            }
+
+            .content {
+                margin-left: 240px;
+            }
+
+            .feature-section {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+                margin-left: 0 !important;
+            }
+
+            .sidebar {
+                display: none;
+            }
+
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+
+            .feature-text h2 {
+                font-size: 1.8rem;
+            }
+
+            .glass-panel {
+                padding: 20px;
+            }
+
+            .feature-section {
+                gap: 30px;
+            }
+
+            .feature-text {
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <i class="fa-solid fa-shield-halved"></i> Vendor Portal
+            </div>
+            <ul class="nav-links">
+                <li><a href="#intro" class="active"><i class="fa-solid fa-house"></i> Introduction</a></li>
+                <li><a href="#dashboard"><i class="fa-solid fa-chart-pie"></i> Dashboard Overview</a></li>
+                <li><a href="#products"><i class="fa-solid fa-box"></i> My Products</a></li>
+                <li><a href="#orders"><i class="fa-solid fa-clipboard-list"></i> Orders</a></li>
+                <li><a href="#settings"><i class="fa-solid fa-gear"></i> Settings</a></li>
+
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="content">
+            <section id="intro" class="glass-panel feature-section">
+
+                <!-- LEFT CONTENT -->
+                <div class="feature-image">
+                    <img src="images/vendor login page.png" alt="Intro Image" onclick="openModal(this.src)">
+                    <div class="overlay">
+                        <i class="fa-solid fa-magnifying-glass-plus"></i> Click to View Full Size
+                    </div>
+                </div>
+
+                <!-- RIGHT IMAGE -->
+                <div class="feature-text">
+                    <h2>
+                        <i class="fa-solid fa-shield-halved"></i>
+                        Essential Safety <span class="highlight">Vendor Module</span>
+                    </h2>
+
+                    <p>
+                        Welcome to the comprehensive project guide for the vendor Module of the EFSS.
+                        Explore the system's administrative controls, entity management, and oversight tools below.
+                    </p>
+
+                    <div class="credentials-card" style="margin-top:20px;">
+                        <h3><i class="fa-solid fa-key"></i> Test Credentials</h3>
+                        <ul>
+                            <li><strong>Email:</strong> 1234@gmail.com</li>
+                            <li><strong>Password:</strong> 12345678</li>
+                        </ul>
+                    </div>
+                </div>
+
+
+            </section>
+
+            <section id="dashboard" class="glass-panel feature-section">
+                <div class="feature-text">
+                    <h2><i class="fa-solid fa-chart-pie"></i> Dashboard Overview</h2>
+                    <p>The central hub for the vendor. Shows 4 key metrics at a glance — Total Products (1), Orders (0),
+                        Revenue (₹0), and Pending Orders (0). Below that, a Recent Orders panel (currently empty) and an
+                        Action Items panel that flags a low stock alert on the Fire Extinguisher with quick shortcuts to
+                        Add Product and Settings.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="images/vendor dashboards.png" alt="Admin Dashboard" onclick="openModal(this.src)">
+                    <div class="overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> Click to View Full Size</div>
+                </div>
+            </section>
+
+            <section id="products" class="glass-panel feature-section reverse">
+                <div class="feature-text">
+                    <h2><i class="fa-solid fa-box"></i> My Products</h2>
+                    <p></p>The inventory management screen. Displays 4 summary cards — Total (1), Active (1), Low Stock
+                    (1),
+                    Out of Stock (0). Below is a searchable, filterable product table showing the one listed item:
+                    Fire Extinguisher (SKU: FE-ABC-6KG-RD, ₹100, only 4 units left — marked as Low Stock, Status:
+                    Active) with View, Edit, and Delete action buttons.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="images/my products.png" alt="Services Management" onclick="openModal(this.src)">
+                    <div class="overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> Click to View Full Size</div>
+                </div>
+            </section>
+
+            <section id="orders" class="glass-panel feature-section">
+                <div class="feature-text">
+                    <h2><i class="fa-solid fa-clipboard-list"></i> Orders</h2>
+                    <p>The order tracking screen. Shows 4 counters — Total, Pending, Shipped, and Delivered — all
+                        currently at 0. Has a search bar and status filter dropdown. The main area shows a "No Orders
+                        Found" empty state since no customer purchases have been made yet. A Refresh button lets the
+                        vendor check for new orders in real time.</p>
+                </div>
+                <div class="feature-image">
+                    <img src="images/Orders.png" alt="AI Solutions" onclick="openModal(this.src)">
+                    <div class="overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> Click to View Full Size</div>
+                </div>
+            </section>
+
+            <section id="settings" class="glass-panel feature-section reverse">
+                <div class="feature-text">
+                    <h2><i class="fa-solid fa-gear"></i> Settings</h2>
+                    <p>The account management screen split into 4 panels:
+
+                        Profile Info — Edit name (Suleman), phone (9619094058), email, and upload an avatar
+                        Store Info — Edit store name (MY STORE) and add a store description
+                        Change Password — Fields for current, new, and confirm password
+                        Account Info — Read-only display of Role (Vendor), email, and store name</p>
+                </div>
+                <div class="feature-image">
+                    <img src="images/settings.png" alt="Store Interface" onclick="openModal(this.src)">
+                    <div class="overlay"><i class="fa-solid fa-magnifying-glass-plus"></i> Click to View Full Size</div>
+                </div>
+            </section>
+
+
+
+
+
+
+        </main>
+    </div>
+
+    <!-- Image Modal -->
+    <div id="imageModal" class="modal">
+        <img class="modal-content" id="modalImg">
+        <span class="close-btn" onclick="closeModal()">×</span>
+    </div>
+
+    <script>
+        function openModal(src) {
+            document.getElementById('modalImg').src = src;
+            document.getElementById('imageModal').style.display = 'flex';
+        }
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+        // Close modal when clicking outside the image
+        document.getElementById('imageModal').addEventListener('click', function (e) {
+            if (e.target === this) closeModal();
+        });
+    </script>
+    <script>
+        if (window !== window.top) {
+            document.querySelector('.sidebar').style.display = 'none';
+            document.querySelector('.content').style.marginLeft = '0';
+        }
+    </script>
+</body>
+
+</html>

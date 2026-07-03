@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Command Center - Interactive Guide</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Sidebar Navigation -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <div class="title-container" style="display: flex; align-items: center; gap: 0.75rem;">
+        <img src="assets/logo.png" alt="Command Center Logo" style="width: 32px; height: 32px; border-radius: 4px;">
+        <div>
+          <h1>Command Center</h1>
+          <p>Interactive Guide & Manual</p>
+        </div>
+      </div>
+      <button id="mobile-menu-btn" class="mobile-menu-btn" aria-label="Toggle menu">
+        <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <nav class="nav-menu">
+      <button class="nav-item active" data-target="sec-intro">Introduction</button>
+      <button class="nav-item" data-target="sec-overview">Overview Dashboard</button>
+      <button class="nav-item" data-target="sec-incidents">Incidents</button>
+      <button class="nav-item" data-target="sec-alerts">Alerts</button>
+      <button class="nav-item" data-target="sec-services">Services</button>
+      <button class="nav-item" data-target="sec-oncall">On-Call</button>
+      <button class="nav-item" data-target="sec-runbooks">Runbooks</button>
+      <button class="nav-item" data-target="sec-metrics">Metrics</button>
+
+      <footer class="app-footer">
+        <p>&copy; 2026 R.I.B Technology. All rights reserved.</p>
+      </footer>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="content-wrapper">
+    
+    <!-- Introduction Section -->
+    <section id="sec-intro" class="section active">
+      <div class="section-header">
+        <h2>Introduction to Command Center</h2>
+        <p>Your minimalist, high-reliability incident management platform.</p>
+      </div>
+      <div class="detail-grid">
+        <div class="info-block">
+          <h3>Welcome to the Future of Reliability</h3>
+          <p>Command Center is an enterprise-grade incident management platform tailored explicitly for Site Reliability Engineers (SREs), DevOps teams, and platform administrators. In a world where microseconds of downtime equate to significant revenue loss, Command Center provides a unified, distraction-free command interface to observe, manage, and resolve system anomalies efficiently. We believe that during a crisis, your tools should fade into the background—providing only the exact telemetry, insights, and actions you need to stabilize the ship.</p>
+          
+          <p>Built from the ground up to follow strict minimalist design principles, every pixel inside the Command Center has a strictly utilitarian purpose. There are no distracting elements, arbitrary animations, or convoluted menus. Instead, responders are greeted with a stark, high-contrast, data-dense environment.</p>
+
+          <h3 style="margin-top: 2rem;">Core Operational Capabilities</h3>
+          <p>The platform aggregates the fragmented nature of modern microservices architecture into a centralized hub, giving your team control over the complete incident lifecycle:</p>
+          <ul>
+            <li><strong>Universal Data Visibility:</strong> Consolidates granular system metrics, automated monitoring alerts, and live ticket tracking into a single, cohesive pane of glass.</li>
+            <li><strong>Intelligent Alert Triage & Deduplication:</strong> Seamlessly ingests overwhelming alert storms from your infrastructure, groups sympathetic failures together, and escalates only the critical thresholds, protecting your engineers from alert fatigue before user-facing customer impact.</li>
+            <li><strong>Orchestrated Streamlined Response:</strong> Replaces panicky chat messages with structured on-call routing policies. Automatically pages the correct engineer based on explicit service ownership schedules and incident severity parameters (P1 to P4).</li>
+            <li><strong>Actionable Service Catalog:</strong> Hosts a dynamic service registry that maps upstream and downstream architectural dependencies. When a database cluster begins dropping connections, you instantly see exactly which customer-facing APIs will be affected.</li>
+            <li><strong>Executable Runbooks:</strong> Bridges the gap between static documentation and live infrastructure. Runbooks are integrated directly into incident alerts, allowing responders to view SOPs and execute vetted fixes with minimal friction, drastically reducing Mean Time to Recovery (MTTR).</li>
+            <li><strong>Post-Mortem Analytics:</strong> Feeds all metrics, error rates, and resolution times into a rigorous visualization engine. This allows engineering leadership to analyze SLA breaches and improve technical capacity planning for the next sprint.</li>
+          </ul>
+
+          <h3 style="margin-top: 2rem;">Security & Enterprise Readiness</h3>
+          <p>Because Command Center sits at the heart of your production environment, it is equipped with stringent enterprise guarantees to ensure robust security postures:</p>
+          <ul>
+            <li><strong>Role-Based Access Control (RBAC):</strong> Strict separation of duties ensuring only authorized responders can execute destructive runbooks or declare global outages.</li>
+            <li><strong>Immutable Audit Trails:</strong> Every status change, runbook interaction, and alert acknowledgment leaves a permanent timestamped log for compliance and post-incident review scopes.</li>
+          </ul>
+          
+          <p style="margin-top: 2rem;"><strong>Getting Started:</strong> Use the sidebar navigation menu to dive deep into the specific features, UI components, and workflows of each core module within the Command Center.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="sec-overview" class="section">
+      <div class="section-header">
+        <h2>Overview Dashboard</h2>
+        <p>The 10,000-foot view of your system's health.</p>
+      </div>
+      <div class="detail-grid">
+        <div class="screenshot-container">
+          <img src="assets/images/overview.png" alt="Overview Dashboard">
+        </div>
+        <div class="info-block">
+          <h3>Features & Data Breakdown</h3>
+          <p>The Overview serves as the primary landing page upon authentication, aggregating the most critical data points from across all microservices and team schedules. It is designed to act as a definitive source of truth during ongoing incidents.</p>
+          <ul>
+            <li><strong>Active Incidents Banner:</strong> Immediately warns the user if P1/P2 incidents are ongoing (e.g., Payment or Product service disruptions). This banner is sticky and visible across the top of the dashboard.</li>
+            <li><strong>Metrics Summary Cards:</strong> High-level tiles that display the total count of Active Incidents, Total Incidents, Team Members (total), and Team Members On-Call right now. Clicking deeply inside any of these cards navigates to their respective detailed views.</li>
+            <li><strong>Recent Activity Feed:</strong> Shows a chronological feed of the latest incident tickets (like INC-1000) and their current status (Open, Investigating). This allows responders to catch up on the most pressing issues right when they log in.</li>
+            <li><strong>Current On-Call Responder Visibility:</strong> Instantly check the status of your Site Reliability Engineers (SREs). It lists out personnel such as L1 DevOps Engineers and Database Administrators currently on duty, allowing you to quickly route communications appropriately.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Incidents Section -->
+    <section id="sec-incidents" class="section">
+      <div class="section-header">
+        <h2>Incidents</h2>
+        <p>Track, manage, and resolve system anomalies.</p>
+      </div>
+      <div class="detail-grid">
+        <div class="screenshot-container">
+          <img src="assets/images/incidents.png" alt="Incidents Tab">
+        </div>
+        <div class="info-block">
+          <h3>Features & Data Breakdown</h3>
+          <p>The core of the incident management engine. Here, DevOps and SREs collaborate to resolve downtime, track post-mortems, and ensure full transparency throughout a service outage.</p>
+          <ul>
+            <li><strong>Ticketing System Alignment:</strong> Every incident gets a unique identifier (e.g., INC-1001) for concise communication across Slack, Jira, or email. You can directly integrate this data with ticketing platforms.</li>
+            <li><strong>Severity Levels (SLA impact):</strong> Incidents are strictly tagged with priority levels (P1 to P4). High severity issues (P1) notify on-call executives and dictate aggressive SLA response times, while P4s might just log warnings for future sprints.</li>
+            <li><strong>Actionable Status Workflow:</strong> Keep stakeholders informed by progressing tickets through distinct stages: Open → Investigating → Identified → Resolving → Resolved. Every transition adds a timestamped log to the event trace.</li>
+            <li><strong>Assigned Responders:</strong> Clearly assigns technical leads to the incident, ensuring no double-work is performed and someone has accountability for driving the resolution forward.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Alerts Section -->
+    <section id="sec-alerts" class="section">
+      <div class="section-header">
+        <h2>Alerts</h2>
+        <p>Proactive monitoring before downtime occurs.</p>
+      </div>
+      <div class="detail-grid">
+        <div class="screenshot-container">
+          <img src="assets/images/alerts.png" alt="Alerts Tab">
+        </div>
+        <div class="info-block">
+          <h3>Features & Data Breakdown</h3>
+          <p>Alerts are the precursor to full-scale incidents. Our system continuously polls automated monitors (Datadog, Prometheus, New Relic) via webhooks and surfaces threshold breaches here for triage.</p>
+          <ul>
+            <li><strong>Automated Threshold Warnings:</strong> Flags potential infrastructure strain like 90%+ CPU usage on Kubernetes pods, database connection pool exhaustion, or elevated 5xx error responses from the Nginx proxy.</li>
+            <li><strong>Escalation Policies:</strong> If an alert isn't acknowledged by an engineer within a predetermined tolerance window (e.g., 5 minutes for Criticals), it automatically escalates into an Incident and triggers pager phone calls.</li>
+            <li><strong>Alert Deduplication:</strong> Groups similar alerts together to prevent "alert fatigue." If 10 instances of your Payment container fail simultaneously, the system batches it under a single warning instead of spamming on-call responders.</li>
+            <li><strong>Acknowledgment & Silencing:</strong> Team members can manually "Acknowledge" an alert to signal they are actively looking into it or "Silence" noisy, non-actionable warnings during recognized maintenance windows.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="sec-services" class="section">
+      <div class="section-header">
+        <h2>Services Catalog</h2>
+        <p>Microservice health directory and dependencies.</p>
+      </div>
+      <div class="detail-grid">
+        <div class="screenshot-container">
+          <img src="assets/images/services.png" alt="Services Tab">
+        </div>
+        <div class="info-block">
+          <h3>Features & Data Breakdown</h3>
+          <p>This tab provides a structural directory of the entire technical stack. It goes beyond simple listing by mapping dependencies so you can understand which downstream architectures are affected.</p>
+          <ul>
+            <li><strong>Live Health State:</strong> Real-time HTTP checks map Green (Operational), Yellow (Degraded), or Red (Offline) statuses against individual domains (e.g., Auth Service vs. Payment Gateway).</li>
+            <li><strong>Service Ownership:</strong> Displays exactly which engineering squad or platform team owns the microservice. Includes direct links to their Slack channel or technical lead.</li>
+            <li><strong>Dependency Web:</strong> Illustrates upstream and downstream consequences. E.g., If the Database service goes down, the UI highlights that the Cart Checkout service is fundamentally blocked.</li>
+            <li><strong>Historical Reliability:</strong> Contains miniature uptime SLA cards (like "99.98% over 30 days") to help hold respective teams accountable for service deterioration.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- On-Call Section -->
+    <section id="sec-oncall" class="section">
+      <div class="section-header">
+        <h2>On-Call Scheduling</h2>
+        <p>Who is currently responsible for the grid.</p>
+      </div>
+      <div class="detail-grid">
+        <div class="screenshot-container">
+          <img src="assets/images/oncall.png" alt="On-Call Tab">
+        </div>
+        <div class="info-block">
+          <h3>Features & Data Breakdown</h3>
+          <p>Clear visibility into the human element of incident response. This module minimizes the chaos of "who do I ping?" during critical outages by consolidating scheduling tools like PagerDuty.</p>
+          <ul>
+            <li><strong>Live Rotations:</strong> Lists exactly who is actively on the primary rotation (Level 1 Responders) and who is acting as the fallback shadow (Level 2).</li>
+            <li><strong>Specialized Routing:</strong> Tags developers by their specialties. When an incident is clearly Database-related, you can skip the generalist queue and immediately page the specific DBA explicitly listed as on-call.</li>
+            <li><strong>Shift Schedules & Handoffs:</strong> Displays upcoming shift transitions visually, allowing personnel to coordinate seamless handoffs. Temporary overrides can be entered if someone needs to step away unexpectedly.</li>
+            <li><strong>Escalation Tiers:</strong> Connects to your directory to map the tree upward (e.g., Engineer -> Team Lead -> Director) so in 30+ minute outages, the appropriate business stakeholders are notified smoothly.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Runbooks Section -->
+    <section id="sec-runbooks" class="section">
+      <div class="section-header">
+        <h2>Runbooks</h2>
+        <p>Standard Operating Procedures for known issues.</p>
+      </div>
+      <div class="detail-grid">
+        <div class="screenshot-container">
+          <img src="assets/images/runbooks.png" alt="Runbooks Tab">
+        </div>
+        <div class="info-block">
+          <h3>Features & Data Breakdown</h3>
+          <p>A structured repository of Standard Operating Procedures (SOPs) designed to reduce Mean Time to Recovery (MTTR) by providing executable, verified fixes for recurring infrastructure problems.</p>
+          <ul>
+            <li><strong>Step-by-step Remediation:</strong> Exact CLI strings, bash scripts, and AWS/Kubernetes commands needed to safely flush caches, reboot frozen pods, or migrate RDS clusters without data loss.</li>
+            <li><strong>Automated Execution:</strong> Advanced runbooks contain one-click webhook triggers that can securely fire commands inside your cluster directly from the dashboard, removing the need for responders to SSH into raw environments.</li>
+            <li><strong>Contextual Linking:</strong> When an alert triggers, the system automatically suggests the specific runbook tied to that exact alert signature based on historical tag matching.</li>
+            <li><strong>Post-Mortem Heritage:</strong> Runbooks are organically updated and refined after every major incident review, acting as a living wiki for the organization's technical resilience.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Metrics Section -->
+    <section id="sec-metrics" class="section">
+      <div class="section-header">
+        <h2>Metrics & Analytics</h2>
+        <p>24-hour performance visualizations.</p>
+      </div>
+      <div class="detail-grid">
+        <div class="screenshot-container">
+          <img src="assets/images/metrics.png" alt="Metrics Tab">
+        </div>
+        <div class="info-block">
+          <h3>Features & Data Breakdown</h3>
+          <p>Holistic data visualization allowing managers and engineers to perform deep-dive analysis on the platform's stability over rolling time windows, essential for capacity planning and board reporting.</p>
+          <ul>
+            <li><strong>Key Performance Indicators (KPIs):</strong> High-level readouts tracking Average Error Rate (e.g., 15.2%) alongside Average Latency/Response Time (e.g., 842ms). Visual delta markers show whether these metrics have historically worsened or improved compared to the previous week.</li>
+            <li><strong>Load Analytics:</strong> Time-series charts map Total Request Volume (72.4K queries). This is crucial for verifying if hardware strain correlates with legitimate high traffic moments or hidden bad code deployments.</li>
+            <li><strong>SLA Monitoring:</strong> A constant calculation of Overall Global Availability (e.g., 97.8% uptime), tying directly into enterprise customer commitments and refunds.</li>
+            <li><strong>Granular Filtering:</strong> Allows SREs to filter the timeline (1h, 6h, 24h, 7d) and isolate graphs to specific problematic microservices instead of analyzing the entire monolith at once.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Application Logic -->
+  <script src="js/app.js"></script>
+</body>
+</html>

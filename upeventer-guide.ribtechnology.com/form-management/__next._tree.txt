@@ -1,0 +1,9 @@
+:HL["/_next/static/chunks/0w969rc9bjoi_.css","style"]
+:HL["/_next/static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
+:HL["/images/VendorDashboard.png","image"]
+:HL["/images/CreateDynamicForm.png","image"]
+:HL["/images/FormBuilderFields.png","image"]
+:HL["/images/FormBuilderDesign.png","image"]
+:HL["/images/FormBuilderPreview.png","image"]
+:HL["/images/WhatsAppKnowledgeBase.png","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"form-management","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"F6Of-L8YmXmI02I5AvION"}

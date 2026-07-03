@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Essential Safety | Master Manual Guide</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #d32f2f;
+            --bg: #ffffff;
+            --surface: rgba(255, 255, 255, 0.95);
+            --glass: rgba(255, 255, 255, 0.8);
+            --sidebar: #f3f4f6;
+            --text: #0f172a;
+            --muted: #64748b;
+            --border: rgba(15, 23, 42, 0.08);
+            --sidebar-width: 300px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            overflow: hidden;
+            /* Prevent body scroll, let iframe scroll */
+        }
+
+        /* Sidebar Elements */
+        .sidebar {
+            width: var(--sidebar-width);
+            background: var(--sidebar);
+            backdrop-filter: blur(10px);
+            padding: 30px 0;
+            border-right: 1px solid var(--border);
+            height: 100vh;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            flex-shrink: 0;
+        }
+
+        .logo {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 30px;
+            padding: 0 20px;
+        }
+
+        .logo i {
+            color: var(--primary);
+        }
+
+        /* Dropdown Button */
+        .dropdown-btn {
+            padding: 15px 20px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+            border-left: 4px solid transparent;
+            transition: 0.3s;
+            font-weight: 500;
+        }
+
+        .dropdown-btn:hover,
+        .dropdown-btn.active {
+            background-color: rgba(211, 47, 47, 0.12);
+            border-left-color: var(--primary);
+            color: var(--text);
+        }
+
+        .btn-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn-content i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .caret {
+            transition: transform 0.3s;
+        }
+
+        .dropdown-btn.active .caret {
+            transform: rotate(180deg);
+        }
+
+        /* Dropdown Container */
+        .dropdown-container {
+            display: none;
+            background-color: rgba(15, 23, 42, 0.03);
+            padding: 8px 0;
+        }
+
+        .dropdown-container a {
+            padding: 10px 20px 10px 55px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.3s;
+        }
+
+        .dropdown-container a:hover,
+        .dropdown-container a.active-link {
+            color: var(--text);
+            background-color: rgba(211, 47, 47, 0.12);
+        }
+
+        .dropdown-container a i {
+            width: 16px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+
+        /* Iframe Main Content */
+        .main-content {
+            flex-grow: 1;
+            height: 100vh;
+            border: none;
+            background: #ffffff;
+        }
+
+        /* Scrollbar styles for sidebar */
+        .sidebar::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .sidebar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+        }
+
+        .sidebar::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Mobile Menu Toggle */
+        .menu-toggle {
+            display: none;
+            position: fixed;
+            top: 5px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--primary);
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 8px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            transition: 0.3s;
+        }
+
+        .menu-toggle:hover {
+            background: #b71c1c;
+        }
+
+
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .sidebar {
+                position: fixed;
+                left: -100%;
+                top: 0;
+                z-index: 999;
+                transition: left 0.4s ease;
+                width: 80%;
+                max-width: 320px;
+            }
+
+            .sidebar.open {
+                left: 0;
+            }
+
+            .main-content {
+                width: 100vw;
+            }
+
+            /* Overlay when sidebar is open */
+            .sidebar-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.5);
+                z-index: 998;
+                backdrop-filter: blur(3px);
+            }
+
+            .sidebar-overlay.open {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Mobile Menu Toggle Button -->
+    <button class="menu-toggle" id="menuToggle">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar">
+        <div class="logo">
+            <i class="fa-solid fa-book-open"></i> EFSS Manual Guide
+        </div>
+
+        <!-- Dashboards Section -->
+        <button class="dropdown-btn active">
+            <div class="btn-content">
+                <i class="fa-solid fa-chart-pie"></i> Dashboards
+            </div>
+            <i class="fa-solid fa-chevron-down caret"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="EFSS DASHBOARDS PANEL/index.html#intro" target="contentFrame"><i class="fa-solid fa-house"></i>
+                Introduction</a>
+            <a href="EFSS DASHBOARDS PANEL/index.html#dashboard" target="contentFrame"><i
+                    class="fa-solid fa-chart-line"></i> Dashboard Overview</a>
+            <a href="EFSS DASHBOARDS PANEL/index.html#services" target="contentFrame"><i
+                    class="fa-solid fa-list-check"></i> Services</a>
+            <a href="EFSS DASHBOARDS PANEL/index.html#ai" target="contentFrame"><i class="fa-solid fa-brain"></i> AI &
+                IoT</a>
+            <a href="EFSS DASHBOARDS PANEL/index.html#store" target="contentFrame"><i class="fa-solid fa-store"></i>
+                Store Interface</a>
+            <a href="EFSS DASHBOARDS PANEL/index.html#about" target="contentFrame"><i
+                    class="fa-solid fa-info-circle"></i> About Us</a>
+            <a href="EFSS DASHBOARDS PANEL/index.html#contact" target="contentFrame"><i
+                    class="fa-solid fa-envelope"></i> Contact</a>
+        </div>
+
+        <!-- Customer Section -->
+        <button class="dropdown-btn">
+            <div class="btn-content">
+                <i class="fa-solid fa-user"></i> Customer
+            </div>
+            <i class="fa-solid fa-chevron-down caret"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="CUSTOMER PANEL/index.html#intro" target="contentFrame"><i class="fa-solid fa-house"></i>
+                Introduction</a>
+            <a href="CUSTOMER PANEL/index.html#store" target="contentFrame"><i class="fas fa-store"></i> Store</a>
+            <a href="CUSTOMER PANEL/index.html#Orders" target="contentFrame"><i class="fas fa-box"></i> Orders</a>
+            <a href="CUSTOMER PANEL/index.html#wishlist" target="contentFrame"><i class="fas fa-heart"></i> Wishlist</a>
+            <a href="CUSTOMER PANEL/index.html#Profile" target="contentFrame"><i class="fas fa-cog"></i> Profile</a>
+        </div>
+
+        <!-- Vendor Section -->
+        <button class="dropdown-btn">
+            <div class="btn-content">
+                <i class="fa-solid fa-shop"></i> Vendor
+            </div>
+            <i class="fa-solid fa-chevron-down caret"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="VENDOR PORTAL/index.html#intro" target="contentFrame"><i class="fa-solid fa-house"></i>
+                Introduction</a>
+            <a href="VENDOR PORTAL/index.html#dashboard" target="contentFrame"><i class="fa-solid fa-chart-pie"></i>
+                Dashboard Overview</a>
+            <a href="VENDOR PORTAL/index.html#products" target="contentFrame"><i class="fa-solid fa-box"></i> My
+                Products</a>
+            <a href="VENDOR PORTAL/index.html#orders" target="contentFrame"><i class="fa-solid fa-clipboard-list"></i>
+                Orders</a>
+            <a href="VENDOR PORTAL/index.html#settings" target="contentFrame"><i class="fa-solid fa-gear"></i>
+                Settings</a>
+        </div>
+
+        <!-- Admin Section -->
+        <button class="dropdown-btn">
+            <div class="btn-content">
+                <i class="fa-solid fa-shield-halved"></i> Admin
+            </div>
+            <i class="fa-solid fa-chevron-down caret"></i>
+        </button>
+        <div class="dropdown-container">
+            <a href="ADMIN MANUAL GUIDE/index.html#intro" target="contentFrame"><i class="fa-solid fa-house"></i>
+                Introduction</a>
+            <a href="ADMIN MANUAL GUIDE/index.html#dashboard" target="contentFrame"><i class="fas fa-store"></i>
+                Dashboards</a>
+            <a href="ADMIN MANUAL GUIDE/index.html#product" target="contentFrame"><i class="fas fa-box"></i>
+                Products</a>
+            <a href="ADMIN MANUAL GUIDE/index.html#order" target="contentFrame"><i class="fas fa-shopping-bag"></i>
+                Orders</a>
+            <a href="ADMIN MANUAL GUIDE/index.html#user" target="contentFrame"><i class="fas fa-users"></i> Users</a>
+            <a href="ADMIN MANUAL GUIDE/index.html#vendor" target="contentFrame"><i class="fas fa-id-badge"></i>
+                Vendors</a>
+            <a href="ADMIN MANUAL GUIDE/index.html#inventory" target="contentFrame"><i class="fas fa-boxes"></i>
+                Inventorys</a>
+            <a href="ADMIN MANUAL GUIDE/index.html#setting" target="contentFrame"><i class="fas fa-cog"></i>
+                Settings</a>
+        </div>
+    </nav>
+
+    <!-- Main View (Iframe) -->
+    <iframe name="contentFrame" src="EFSS DASHBOARDS PANEL/index.html#intro" class="main-content"></iframe>
+
+    <script>
+        // Dropdown toggle logic
+        var dropdowns = document.getElementsByClassName("dropdown-btn");
+        for (let i = 0; i < dropdowns.length; i++) {
+            dropdowns[i].addEventListener("click", function () {
+                // Close all other dropdowns
+                for (let j = 0; j < dropdowns.length; j++) {
+                    if (dropdowns[j] !== this) {
+                        dropdowns[j].classList.remove("active");
+                        dropdowns[j].nextElementSibling.style.display = "none";
+                    }
+                }
+
+                // Toggle current dropdown
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+
+        // Active link highlighting
+        var links = document.querySelectorAll(".dropdown-container a");
+        links.forEach(link => {
+            link.addEventListener("click", function (e) {
+                // Determine if we need to let the iframe load the page or just scroll
+                // Since clicking href with # inside an iframe triggers a scroll (if page is already loaded),
+                // we check if the iframe src path matches the link path.
+                const currentIframeSrcBase = document.querySelector('iframe').src.split('#')[0];
+                const linkHrefBase = this.href.split('#')[0];
+
+                if (currentIframeSrcBase !== linkHrefBase) {
+                    // The browser will load the new page in iframe automatically due to target="contentFrame"
+                    // Wait a moment for page to load, then send a message or simply let it jump.
+                }
+
+                // Remove active class from all links
+                links.forEach(l => l.classList.remove("active-link"));
+                // Add active class to clicked
+                this.classList.add("active-link");
+
+                // Close sidebar on mobile after clicking a link
+                if (window.innerWidth <= 768) {
+                    document.querySelector('.sidebar').classList.remove('open');
+                    document.getElementById('sidebarOverlay').classList.remove('open');
+                }
+            });
+        });
+
+        // Mobile Sidebar Toggle Logic
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebar = document.querySelector('.sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+        function toggleSidebar() {
+            sidebar.classList.toggle('open');
+            sidebarOverlay.classList.toggle('open');
+        }
+
+        menuToggle.addEventListener('click', toggleSidebar);
+        sidebarOverlay.addEventListener('click', toggleSidebar);
+
+        // Communication to sync iframe scroll with active links later if we want
+        // (For now, native target="contentFrame" with # anchors handles the jumping natively)
+    </script>
+</body>
+
+</html>
