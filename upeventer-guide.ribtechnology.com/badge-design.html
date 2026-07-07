@@ -88,89 +88,91 @@
         </nav>
     </aside>
     <div class="flex-1 flex flex-col min-w-0">
-        <header class="h-14 border-b border-gray-100 bg-white sticky top-0 z-40 flex items-center gap-3 px-4 md:px-8">
-            <button
-                class="lg:hidden p-2 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-colors"
-                aria-label="Open navigation"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                    stroke-width="2.5">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg></button>
-            <div
-                class="fixed top-0 left-0 h-full w-[300px] bg-white z-[70] shadow-2xl flex flex-col transition-transform duration-300 ease-in-out lg:hidden -translate-x-full">
-                <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
-                    <div class="flex items-center gap-3">
-                        <div class="relative w-9 h-9 flex items-center justify-center shrink-0"><img
-                                src="/images/upeventer-icon.png" alt="Upeventer icon"
-                                class="w-9 h-9 rounded-lg object-cover" /></div>
+        <header
+            class="h-14 border-b border-gray-100 bg-white sticky top-0 z-40 flex justify-between items-center gap-3 px-4 md:px-8">
+            <div class="flex items-center gap-3">
+                <button
+                    class="lg:hidden p-2 rounded-lg text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-colors"
+                    aria-label="Open navigation"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor" stroke-width="2.5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg></button>
+                <div
+                    class="fixed top-0 left-0 h-full w-[300px] bg-white z-[70] shadow-2xl flex flex-col transition-transform duration-300 ease-in-out lg:hidden -translate-x-full">
+                    <div class="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+                        <div class="flex items-center gap-3">
+                            <div class="relative w-9 h-9 flex items-center justify-center shrink-0"><img
+                                    src="/images/upeventer-icon.png" alt="Upeventer icon"
+                                    class="w-9 h-9 rounded-lg object-cover" /></div>
+                            <div>
+                                <div class="font-black text-gray-900 text-base leading-none tracking-tight">Upeventer
+                                </div>
+                                <div class="text-[9px] text-gray-400 font-bold uppercase tracking-widest mt-0.5">by
+                                    R.I.B
+                                    Technology</div>
+                            </div>
+                        </div><button
+                            class="p-2 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors"
+                            aria-label="Close navigation"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg></button>
+                    </div>
+                    <nav class="flex-1 overflow-y-auto px-6 py-8 space-y-8">
                         <div>
-                            <div class="font-black text-gray-900 text-base leading-none tracking-tight">Upeventer</div>
-                            <div class="text-[9px] text-gray-400 font-bold uppercase tracking-widest mt-0.5">by R.I.B
-                                Technology</div>
+                            <h3 class="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em] mb-4">GETTING
+                                STARTED</h3>
+                            <div class="space-y-1"><a
+                                    class="flex items-center px-3 py-2.5 rounded-lg text-[15px] font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                                    href="/">Overview</a><a
+                                    class="flex items-center px-3 py-2.5 rounded-lg text-[15px] font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                                    href="/login">Login</a><a
+                                    class="flex items-center px-3 py-2.5 rounded-lg text-[15px] font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                                    href="/dashboard">Dashboard</a></div>
                         </div>
-                    </div><button
-                        class="p-2 rounded-lg text-gray-400 hover:text-gray-700 hover:bg-gray-100 transition-colors"
-                        aria-label="Close navigation"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor" stroke-width="2.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"></path>
-                        </svg></button>
+                        <div>
+                            <h3 class="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em] mb-4">VENDOR
+                                MODULES
+                            </h3>
+                            <div class="space-y-1"><a
+                                    class="flex items-center px-3 py-2.5 rounded-lg text-[15px] font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                                    href="/form-management">Form Management</a><a
+                                    class="flex items-center px-3 py-2.5 rounded-lg text-[15px] font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                                    href="/bulk-caller">AI Bulk Caller</a><a
+                                    class="flex items-center px-3 py-2.5 rounded-lg text-[15px] font-medium transition-all text-blue-600 bg-blue-50"
+                                    href="/badge-design">Badge Design</a></div>
+                        </div>
+                        <div>
+                            <h3 class="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em] mb-4">ADMIN
+                                MODULES
+                            </h3>
+                            <div class="space-y-1"><a
+                                    class="flex items-center px-3 py-2.5 rounded-lg text-[15px] font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                                    href="/user-management">User Management</a><a
+                                    class="flex items-center px-3 py-2.5 rounded-lg text-[15px] font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                                    href="/vendor-analytics">Vendor Analytics</a><a
+                                    class="flex items-center px-3 py-2.5 rounded-lg text-[15px] font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                                    href="/featured-events">Featured Events</a><a
+                                    class="flex items-center px-3 py-2.5 rounded-lg text-[15px] font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                                    href="/contact-inquiries">Contact Inquiries</a></div>
+                        </div>
+                        <div>
+                            <h3 class="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em] mb-4">WORKFLOW
+                            </h3>
+                            <div class="space-y-1"><a
+                                    class="flex items-center px-3 py-2.5 rounded-lg text-[15px] font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                                    href="/end-to-end-workflow">End to end event workflow</a></div>
+                        </div>
+                    </nav>
                 </div>
-                <nav class="flex-1 overflow-y-auto px-6 py-8 space-y-8">
-                    <div>
-                        <h3 class="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em] mb-4">GETTING
-                            STARTED</h3>
-                        <div class="space-y-1"><a
-                                class="flex items-center px-3 py-2.5 rounded-lg text-[15px] font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                                href="/">Overview</a><a
-                                class="flex items-center px-3 py-2.5 rounded-lg text-[15px] font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                                href="/login">Login</a><a
-                                class="flex items-center px-3 py-2.5 rounded-lg text-[15px] font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                                href="/dashboard">Dashboard</a></div>
-                    </div>
-                    <div>
-                        <h3 class="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em] mb-4">VENDOR MODULES
-                        </h3>
-                        <div class="space-y-1"><a
-                                class="flex items-center px-3 py-2.5 rounded-lg text-[15px] font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                                href="/form-management">Form Management</a><a
-                                class="flex items-center px-3 py-2.5 rounded-lg text-[15px] font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                                href="/bulk-caller">AI Bulk Caller</a><a
-                                class="flex items-center px-3 py-2.5 rounded-lg text-[15px] font-medium transition-all text-blue-600 bg-blue-50"
-                                href="/badge-design">Badge Design</a></div>
-                    </div>
-                    <div>
-                        <h3 class="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em] mb-4">ADMIN MODULES
-                        </h3>
-                        <div class="space-y-1"><a
-                                class="flex items-center px-3 py-2.5 rounded-lg text-[15px] font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                                href="/user-management">User Management</a><a
-                                class="flex items-center px-3 py-2.5 rounded-lg text-[15px] font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                                href="/vendor-analytics">Vendor Analytics</a><a
-                                class="flex items-center px-3 py-2.5 rounded-lg text-[15px] font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                                href="/featured-events">Featured Events</a><a
-                                class="flex items-center px-3 py-2.5 rounded-lg text-[15px] font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                                href="/contact-inquiries">Contact Inquiries</a></div>
-                    </div>
-                    <div>
-                        <h3 class="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em] mb-4">WORKFLOW</h3>
-                        <div class="space-y-1"><a
-                                class="flex items-center px-3 py-2.5 rounded-lg text-[15px] font-medium transition-all text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                                href="/end-to-end-workflow">End to end event workflow</a></div>
-                    </div>
-                </nav>
+                <div class="font-bold text-gray-900 text-sm tracking-tight whitespace-nowrap shrink-0">
+                    Upeventer Guides
+                </div>
             </div>
-            <div class="font-bold text-gray-900 text-sm tracking-tight whitespace-nowrap shrink-0">Upeventer Guides
-            </div>
-            <div class="flex-1 max-w-lg">
+            <div class="max-w-lg">
                 <div class="relative w-full"><input type="text" placeholder="Search documentation..."
-                        class="w-full bg-white border border-gray-100 rounded-xl py-2.5 pl-11 pr-4 text-[14px] text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all shadow-sm placeholder:text-gray-400 font-medium"
-                        value="" /><svg class="absolute left-4 top-3 h-4.5 w-4.5 text-gray-400" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-                    </svg>
-                    <div class="absolute right-3 top-2.5 flex items-center gap-1"><kbd
-                            class="hidden sm:inline-block border border-gray-100 bg-gray-50 rounded-lg px-2 py-0.5 text-[10px] text-gray-400 font-bold font-sans shadow-sm tracking-widest">⌘K</kbd>
-                    </div>
+                        class="w-full bg-white border border-gray-100 rounded-xl py-2.5 px-4 text-[14px] text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all shadow-sm placeholder:text-gray-400 font-medium"
+                        value="" />
                 </div>
             </div>
         </header>
@@ -192,11 +194,13 @@
                         </h2>
                         <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden p-1 mb-10">
                             <img src="/images/SingleBadgeDesign.png" alt="Single Badge Design Studio Canvas"
-                                class="w-full h-auto rounded-xl border border-gray-100" /></div>
+                                class="w-full h-auto rounded-xl border border-gray-100" />
+                        </div>
                         <h2 class="text-[28px] font-bold text-gray-900 mb-6 tracking-tight">Bulk Badge Generation</h2>
                         <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden p-1 mb-10">
                             <img src="/images/BulkDesign.png" alt="Bulk Badge Generation Canvas"
-                                class="w-full h-auto rounded-xl border border-gray-100" /></div>
+                                class="w-full h-auto rounded-xl border border-gray-100" />
+                        </div>
                         <h3 class="text-[24px] font-bold text-gray-900 mb-3">QR Generation Engine</h3>
                         <p class="text-gray-600 text-[17px] leading-relaxed mb-6">The studio provides a canvas where
                             organizers can drag and drop typography, logos, and dynamic user fields. Crucially, it
@@ -210,7 +214,113 @@
             </div>
         </main>
     </div>
+    <aside
+        class="w-[280px] border-l border-gray-100 bg-gray-50 hidden xl:flex flex-col shrink-0 h-screen sticky top-0 overflow-y-auto">
+        <div class="px-6 pt-6 pb-4 border-b border-gray-100">
+            <h3 class="text-xs font-black text-gray-400 uppercase tracking-[0.15em]">Search Documentation</h3>
+        </div>
+        <div class="px-4 py-4">
+            <div class="relative">
+                <input type="text" id="search-input" placeholder="Search docs..."
+                    class="w-full bg-white border border-gray-200 rounded-lg py-2 px-3 text-xs text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all shadow-sm placeholder:text-gray-400 font-medium" />
+                <svg class="absolute right-3 top-2.5 w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+            </div>
+        </div>
+        <div class="flex-1 overflow-y-auto px-3 py-4 space-y-4">
+            <!-- Quick Links Section -->
+            <div>
+                <h4 class="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em] px-2 mb-2">Quick Links</h4>
+                <div class="space-y-1">
+                    <a href="/"
+                        class="flex items-start px-2 py-1.5 rounded-md text-xs text-gray-600 hover:text-gray-900 hover:bg-white transition-colors group">
+                        <span class="text-blue-500 mr-2">→</span>
+                        <span class="group-hover:text-blue-600 font-medium">Home</span>
+                    </a>
+                </div>
+            </div>
+            <!-- On This Page Section -->
+            <div>
+                <h4 class="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em] px-2 mb-2">On This Page</h4>
+                <div class="space-y-1">
+                    <a href="/badge-design"
+                        class="flex items-start px-2 py-1.5 rounded-md text-xs text-gray-600 hover:text-gray-900 hover:bg-white transition-colors group">
+                        <span class="text-green-500 mr-2">•</span>
+                        <span class="group-hover:text-blue-600 font-medium">Badge Design</span>
+                    </a>
+                </div>
+            </div>
+            <!-- All Pages Section -->
+            <div>
+                <h4 class="text-[10px] font-black text-gray-400 uppercase tracking-[0.15em] px-2 mb-2">All Pages</h4>
+                <div class="space-y-1">
+                    <a href="/"
+                        class="flex items-start px-2 py-1.5 rounded-md text-xs text-gray-600 hover:text-gray-900 hover:bg-white transition-colors">
+                        <span class="group-hover:text-blue-600 font-medium">Overview</span>
+                    </a>
+                    <a href="/login"
+                        class="flex items-start px-2 py-1.5 rounded-md text-xs text-gray-600 hover:text-gray-900 hover:bg-white transition-colors">
+                        <span class="group-hover:text-blue-600 font-medium">Login</span>
+                    </a>
+                    <a href="/dashboard"
+                        class="flex items-start px-2 py-1.5 rounded-md text-xs text-gray-600 hover:text-gray-900 hover:bg-white transition-colors">
+                        <span class="group-hover:text-blue-600 font-medium">Dashboard</span>
+                    </a>
+                    <a href="/form-management"
+                        class="flex items-start px-2 py-1.5 rounded-md text-xs text-gray-600 hover:text-gray-900 hover:bg-white transition-colors">
+                        <span class="group-hover:text-blue-600 font-medium">Form Management</span>
+                    </a>
+                    <a href="/bulk-caller"
+                        class="flex items-start px-2 py-1.5 rounded-md text-xs text-gray-600 hover:text-gray-900 hover:bg-white transition-colors">
+                        <span class="group-hover:text-blue-600 font-medium">AI Bulk Caller</span>
+                    </a>
+                    <a href="/user-management"
+                        class="flex items-start px-2 py-1.5 rounded-md text-xs text-gray-600 hover:text-gray-900 hover:bg-white transition-colors">
+                        <span class="group-hover:text-blue-600 font-medium">User Management</span>
+                    </a>
+                    <a href="/vendor-analytics"
+                        class="flex items-start px-2 py-1.5 rounded-md text-xs text-gray-600 hover:text-gray-900 hover:bg-white transition-colors">
+                        <span class="group-hover:text-blue-600 font-medium">Vendor Analytics</span>
+                    </a>
+                    <a href="/featured-events"
+                        class="flex items-start px-2 py-1.5 rounded-md text-xs text-gray-600 hover:text-gray-900 hover:bg-white transition-colors">
+                        <span class="group-hover:text-blue-600 font-medium">Featured Events</span>
+                    </a>
+                    <a href="/contact-inquiries"
+                        class="flex items-start px-2 py-1.5 rounded-md text-xs text-gray-600 hover:text-gray-900 hover:bg-white transition-colors">
+                        <span class="group-hover:text-blue-600 font-medium">Contact Inquiries</span>
+                    </a>
+                    <a href="/end-to-end-workflow"
+                        class="flex items-start px-2 py-1.5 rounded-md text-xs text-gray-600 hover:text-gray-900 hover:bg-white transition-colors">
+                        <span class="group-hover:text-blue-600 font-medium">End-to-End Workflow</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </aside>
     <script src="/_next/static/chunks/00gq-v0e07i1q.js" id="_R_" async=""></script>
+    <script>
+        // Simple search functionality for the right sidebar
+        const searchInput = document.getElementById('search-input');
+        const docLinks = document.querySelectorAll('.flex-1 .space-y-1 a');
+
+        if (searchInput) {
+            searchInput.addEventListener('input', function (e) {
+                const query = e.target.value.toLowerCase();
+                docLinks.forEach(link => {
+                    const text = link.textContent.toLowerCase();
+                    if (query === '' || text.includes(query)) {
+                        link.style.display = 'flex';
+                    } else {
+                        link.style.display = 'none';
+                    }
+                });
+            });
+        }
+    </script>
     <script>(self.__next_f = self.__next_f || []).push([0])</script>
     <script>self.__next_f.push([1, "1:\"$Sreact.fragment\"\n2:I[87771,[\"/_next/static/chunks/0hpeyy9fh43tn.js\",\"/_next/static/chunks/0d3shmwh5_nmn.js\"],\"default\"]\n3:I[32119,[\"/_next/static/chunks/0hpeyy9fh43tn.js\",\"/_next/static/chunks/0d3shmwh5_nmn.js\"],\"default\"]\n4:I[69950,[\"/_next/static/chunks/0hpeyy9fh43tn.js\",\"/_next/static/chunks/0d3shmwh5_nmn.js\"],\"default\"]\n5:I[39756,[\"/_next/static/chunks/0hpeyy9fh43tn.js\",\"/_next/static/chunks/0d3shmwh5_nmn.js\"],\"default\"]\n6:I[37457,[\"/_next/static/chunks/0hpeyy9fh43tn.js\",\"/_next/static/chunks/0d3shmwh5_nmn.js\"],\"default\"]\nd:I[68027,[\"/_next/static/chunks/0hpeyy9fh43tn.js\",\"/_next/static/chunks/0d3shmwh5_nmn.js\"],\"default\",1]\n:HL[\"/_next/static/chunks/0w969rc9bjoi_.css\",\"style\"]\n:HL[\"/_next/static/media/83afe278b6a6bb3c-s.p.0q-301v4kxxnr.woff2\",\"font\",{\"crossOrigin\":\"\",\"type\":\"font/woff2\"}]\n:HL[\"/images/SingleBadgeDesign.png\",\"image\"]\n"])</script>
     <script>self.__next_f.push([1, "0:{\"P\":null,\"c\":[\"\",\"badge-design\"],\"q\":\"\",\"i\":false,\"f\":[[[\"\",{\"children\":[\"badge-design\",{\"children\":[\"__PAGE__\",{}]}]},\"$undefined\",\"$undefined\",16],[[\"$\",\"$1\",\"c\",{\"children\":[[[\"$\",\"link\",\"0\",{\"rel\":\"stylesheet\",\"href\":\"/_next/static/chunks/0w969rc9bjoi_.css\",\"precedence\":\"next\",\"crossOrigin\":\"$undefined\",\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-0\",{\"src\":\"/_next/static/chunks/0hpeyy9fh43tn.js\",\"async\":true,\"nonce\":\"$undefined\"}],[\"$\",\"script\",\"script-1\",{\"src\":\"/_next/static/chunks/0d3shmwh5_nmn.js\",\"async\":true,\"nonce\":\"$undefined\"}]],[\"$\",\"html\",null,{\"lang\":\"en\",\"className\":\"inter_fe8b9d92-module__LINzvG__variable antialiased h-full\",\"children\":[\"$\",\"body\",null,{\"className\":\"min-h-full flex bg-white text-[#1a1a1a]\",\"children\":[[\"$\",\"$L2\",null,{}],[\"$\",\"div\",null,{\"className\":\"flex-1 flex flex-col min-w-0\",\"children\":[[\"$\",\"header\",null,{\"className\":\"h-14 border-b border-gray-100 bg-white sticky top-0 z-40 flex items-center gap-3 px-4 md:px-8\",\"children\":[[\"$\",\"$L3\",null,{}],[\"$\",\"div\",null,{\"className\":\"font-bold text-gray-900 text-sm tracking-tight whitespace-nowrap shrink-0\",\"children\":\"Upeventer Guides\"}],[\"$\",\"div\",null,{\"className\":\"flex-1 max-w-lg\",\"children\":[\"$\",\"$L4\",null,{}]}]]}],[\"$\",\"main\",null,{\"className\":\"flex-1 py-10 px-5 sm:px-10 md:px-16 lg:px-20 xl:px-28\",\"children\":[\"$\",\"div\",null,{\"className\":\"max-w-4xl mx-auto\",\"children\":[\"$\",\"$L5\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L6\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":[[[\"$\",\"title\",null,{\"children\":\"404: This page could not be found.\"}],[\"$\",\"div\",null,{\"style\":{\"fontFamily\":\"system-ui,\\\"Segoe UI\\\",Roboto,Helvetica,Arial,sans-serif,\\\"Apple Color Emoji\\\",\\\"Segoe UI Emoji\\\"\",\"height\":\"100vh\",\"textAlign\":\"center\",\"display\":\"flex\",\"flexDirection\":\"column\",\"alignItems\":\"center\",\"justifyContent\":\"center\"},\"children\":[\"$\",\"div\",null,{\"children\":[[\"$\",\"style\",null,{\"dangerouslySetInnerHTML\":{\"__html\":\"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}\"}}],[\"$\",\"h1\",null,{\"className\":\"next-error-h1\",\"style\":{\"display\":\"inline-block\",\"margin\":\"0 20px 0 0\",\"padding\":\"0 23px 0 0\",\"fontSize\":24,\"fontWeight\":500,\"verticalAlign\":\"top\",\"lineHeight\":\"49px\"},\"children\":404}],[\"$\",\"div\",null,{\"style\":{\"display\":\"inline-block\"},\"children\":[\"$\",\"h2\",null,{\"style\":{\"fontSize\":14,\"fontWeight\":400,\"lineHeight\":\"49px\",\"margin\":0},\"children\":\"This page could not be found.\"}]}]]}]}]],[]],\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]}]}]]}]]}]}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[null,[\"$\",\"$L5\",null,{\"parallelRouterKey\":\"children\",\"error\":\"$undefined\",\"errorStyles\":\"$undefined\",\"errorScripts\":\"$undefined\",\"template\":[\"$\",\"$L6\",null,{}],\"templateStyles\":\"$undefined\",\"templateScripts\":\"$undefined\",\"notFound\":\"$undefined\",\"forbidden\":\"$undefined\",\"unauthorized\":\"$undefined\"}]]}],{\"children\":[[\"$\",\"$1\",\"c\",{\"children\":[[\"$\",\"div\",null,{\"className\":\"w-full\",\"children\":[[\"$\",\"div\",null,{\"className\":\"mb-20\",\"children\":[[\"$\",\"h1\",null,{\"className\":\"text-[44px] font-black text-gray-900 tracking-tight leading-[1.1] mb-6\",\"children\":\"Badge Design Studio\"}],[\"$\",\"p\",null,{\"className\":\"text-[24px] text-blue-600 font-bold mb-8 leading-snug\",\"children\":\"Custom professional badge generation for on-site event logistics.\"}],[\"$\",\"p\",null,{\"className\":\"text-gray-600 text-[19px] leading-relaxed max-w-4xl font-medium\",\"children\":\"The Badge Design Studio provides a powerful interface for creating scannable, professional event badges. From individual attendee badges to bulk generation for large-scale conferences, this module ensures smooth check-ins and professional presentation.\"}]]}],[\"$\",\"section\",null,{\"className\":\"mb-20\",\"children\":[[\"$\",\"h2\",null,{\"className\":\"text-[28px] font-bold text-gray-900 mb-6 tracking-tight\",\"children\":\"Single Badge Design Studio\"}],[\"$\",\"div\",null,{\"className\":\"bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden p-1 mb-10\",\"children\":[\"$\",\"img\",null,{\"src\":\"/images/SingleBadgeDesign.png\",\"alt\":\"Single Badge Design Studio Canvas\",\"className\":\"w-full h-auto rounded-xl border border-gray-100\"}]}],[\"$\",\"h2\",null,{\"className\":\"text-[28px] font-bold text-gray-900 mb-6 tracking-tight\",\"children\":\"Bulk Badge Generation\"}],[\"$\",\"div\",null,{\"className\":\"bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden p-1 mb-10\",\"children\":\"$L7\"}],\"$L8\",\"$L9\"]}]]}],null,\"$La\"]}],{},null,false,null]},null,false,\"$@b\"]},null,false,null],\"$Lc\",false]],\"m\":\"$undefined\",\"G\":[\"$d\",[\"$Le\"]],\"S\":true,\"h\":null,\"s\":\"$undefined\",\"l\":\"$undefined\",\"p\":\"$undefined\",\"d\":\"$undefined\",\"b\":\"F6Of-L8YmXmI02I5AvION\"}\n"])</script>

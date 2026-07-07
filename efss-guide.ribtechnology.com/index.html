@@ -13,11 +13,11 @@
             --bg: #ffffff;
             --surface: rgba(255, 255, 255, 0.95);
             --glass: rgba(255, 255, 255, 0.8);
-            --sidebar: #f3f4f6;
+            --sidebar: #f5f5f5;
             --text: #0f172a;
             --muted: #64748b;
             --border: rgba(15, 23, 42, 0.08);
-            --sidebar-width: 300px;
+            --sidebar-width: 320px;
         }
 
         * {
@@ -28,7 +28,7 @@
 
         body {
             font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            background: #ffffff;
             color: var(--text);
             min-height: 100vh;
             display: flex;
@@ -48,6 +48,7 @@
             display: flex;
             flex-direction: column;
             flex-shrink: 0;
+            box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
         }
 
         .logo {
@@ -84,13 +85,6 @@
             font-weight: 500;
         }
 
-        .dropdown-btn:hover,
-        .dropdown-btn.active {
-            background-color: rgba(211, 47, 47, 0.12);
-            border-left-color: var(--primary);
-            color: var(--text);
-        }
-
         .btn-content {
             display: flex;
             align-items: center;
@@ -102,18 +96,12 @@
             text-align: center;
         }
 
-        .caret {
-            transition: transform 0.3s;
-        }
 
-        .dropdown-btn.active .caret {
-            transform: rotate(180deg);
-        }
 
         /* Dropdown Container */
         .dropdown-container {
-            display: none;
-            background-color: rgba(15, 23, 42, 0.03);
+            display: block;
+            background-color: #f5f5f5;
             padding: 8px 0;
         }
 
@@ -131,7 +119,7 @@
         .dropdown-container a:hover,
         .dropdown-container a.active-link {
             color: var(--text);
-            background-color: rgba(211, 47, 47, 0.12);
+            background-color: #f5f5f5;
         }
 
         .dropdown-container a i {
@@ -140,10 +128,66 @@
             font-size: 0.9em;
         }
 
+        /* Content wrapper with top header and iframe */
+        .content-wrapper {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            height: 100vh;
+            background: #ffffff;
+            overflow: hidden;
+        }
+
+        .topbar {
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+            border-bottom: 1px solid var(--border);
+            background: var(--surface);
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .page-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        .search {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .search input {
+            width: 340px;
+            max-width: calc(100vw - var(--sidebar-width) - 160px);
+            height: 38px;
+            padding: 8px 12px 8px 36px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(250, 250, 250, 0.9));
+            color: var(--text);
+            outline: none;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%2364748b"><path d="M11.742 10.344l3.85 3.85-1.398 1.398-3.85-3.85a6.5 6.5 0 1 1 1.398-1.398zM6.5 11a4.5 4.5 0 1 0 0-9 4.5 4.5 0 0 0 0 9z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: 10px center;
+            background-size: 16px 16px;
+        }
+
+        .search input::placeholder {
+            color: var(--muted);
+        }
+
         /* Iframe Main Content */
         .main-content {
             flex-grow: 1;
-            height: 100vh;
+            height: calc(100vh - 64px);
             border: none;
             background: #ffffff;
         }
@@ -158,12 +202,12 @@
         }
 
         .sidebar::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(15, 23, 42, 0.1);
             border-radius: 10px;
         }
 
         .sidebar::-webkit-scrollbar-thumb:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(15, 23, 42, 0.2);
         }
 
         /* Mobile Menu Toggle */
@@ -188,8 +232,6 @@
         .menu-toggle:hover {
             background: #b71c1c;
         }
-
-
 
         /* Responsive Styles */
         @media (max-width: 768px) {
@@ -252,11 +294,10 @@
         </div>
 
         <!-- Dashboards Section -->
-        <button class="dropdown-btn active">
+        <button class="dropdown-btn">
             <div class="btn-content">
                 <i class="fa-solid fa-chart-pie"></i> Dashboards
             </div>
-            <i class="fa-solid fa-chevron-down caret"></i>
         </button>
         <div class="dropdown-container">
             <a href="EFSS DASHBOARDS PANEL/index.html#intro" target="contentFrame"><i class="fa-solid fa-house"></i>
@@ -280,7 +321,6 @@
             <div class="btn-content">
                 <i class="fa-solid fa-user"></i> Customer
             </div>
-            <i class="fa-solid fa-chevron-down caret"></i>
         </button>
         <div class="dropdown-container">
             <a href="CUSTOMER PANEL/index.html#intro" target="contentFrame"><i class="fa-solid fa-house"></i>
@@ -296,7 +336,6 @@
             <div class="btn-content">
                 <i class="fa-solid fa-shop"></i> Vendor
             </div>
-            <i class="fa-solid fa-chevron-down caret"></i>
         </button>
         <div class="dropdown-container">
             <a href="VENDOR PORTAL/index.html#intro" target="contentFrame"><i class="fa-solid fa-house"></i>
@@ -316,7 +355,6 @@
             <div class="btn-content">
                 <i class="fa-solid fa-shield-halved"></i> Admin
             </div>
-            <i class="fa-solid fa-chevron-down caret"></i>
         </button>
         <div class="dropdown-container">
             <a href="ADMIN MANUAL GUIDE/index.html#intro" target="contentFrame"><i class="fa-solid fa-house"></i>
@@ -337,22 +375,28 @@
         </div>
     </nav>
 
-    <!-- Main View (Iframe) -->
-    <iframe name="contentFrame" src="EFSS DASHBOARDS PANEL/index.html#intro" class="main-content"></iframe>
+    <!-- Main View (Header + Iframe) -->
+    <div class="content-wrapper">
+        <header class="topbar">
+            <div class="page-title">EFSS Guides</div>
+            <div class="search">
+                <input type="search" placeholder="Search documentation..." aria-label="Search documentation">
+            </div>
+        </header>
+
+        <iframe name="contentFrame" src="EFSS DASHBOARDS PANEL/index.html#intro" class="main-content"></iframe>
+    </div>
 
     <script>
-        // Dropdown toggle logic
+        // Dropdown toggle logic for expandable sections
         var dropdowns = document.getElementsByClassName("dropdown-btn");
         for (let i = 0; i < dropdowns.length; i++) {
-            dropdowns[i].addEventListener("click", function () {
-                // Close all other dropdowns
-                for (let j = 0; j < dropdowns.length; j++) {
-                    if (dropdowns[j] !== this) {
-                        dropdowns[j].classList.remove("active");
-                        dropdowns[j].nextElementSibling.style.display = "none";
-                    }
-                }
+            // Keep all dropdowns open by default
+            if (dropdowns[i].nextElementSibling && dropdowns[i].nextElementSibling.classList.contains("dropdown-container")) {
+                dropdowns[i].nextElementSibling.style.display = "block";
+            }
 
+            dropdowns[i].addEventListener("click", function () {
                 // Toggle current dropdown
                 this.classList.toggle("active");
                 var dropdownContent = this.nextElementSibling;
@@ -364,21 +408,10 @@
             });
         }
 
-        // Active link highlighting
+        // Active link highlighting for both sidebar items and dropdown links
         var links = document.querySelectorAll(".dropdown-container a");
         links.forEach(link => {
             link.addEventListener("click", function (e) {
-                // Determine if we need to let the iframe load the page or just scroll
-                // Since clicking href with # inside an iframe triggers a scroll (if page is already loaded),
-                // we check if the iframe src path matches the link path.
-                const currentIframeSrcBase = document.querySelector('iframe').src.split('#')[0];
-                const linkHrefBase = this.href.split('#')[0];
-
-                if (currentIframeSrcBase !== linkHrefBase) {
-                    // The browser will load the new page in iframe automatically due to target="contentFrame"
-                    // Wait a moment for page to load, then send a message or simply let it jump.
-                }
-
                 // Remove active class from all links
                 links.forEach(l => l.classList.remove("active-link"));
                 // Add active class to clicked
@@ -404,9 +437,6 @@
 
         menuToggle.addEventListener('click', toggleSidebar);
         sidebarOverlay.addEventListener('click', toggleSidebar);
-
-        // Communication to sync iframe scroll with active links later if we want
-        // (For now, native target="contentFrame" with # anchors handles the jumping natively)
     </script>
 </body>
 

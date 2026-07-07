@@ -110,10 +110,10 @@
             font-size: 14px;
             font-weight: 600;
             color: var(--ink);
-            cursor: pointer;
+            cursor: default;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
             gap: 12px;
             transition: all 0.2s ease;
             border-radius: 0;
@@ -134,21 +134,15 @@
             text-align: left;
         }
 
-        .sidebar-menu-btn .chevron {
-            font-size: 12px;
-            flex-shrink: 0;
-            transition: transform 0.25s ease;
-            opacity: 0.6;
-        }
-
-        .sidebar-menu-btn.expanded .chevron {
-            transform: rotate(180deg);
-        }
-
         .sidebar-submenu {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            max-height: none;
+            overflow: visible;
+            transition: none;
+        }
+
+        .sidebar-submenu-inner {
+            padding: 8px 0;
+            background: rgba(79, 95, 240, 0.04);
         }
 
         .sidebar-submenu-inner {
@@ -189,7 +183,7 @@
         .wrap {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 48px 32px 96px;
+            padding: 80px 32px 96px;
         }
 
         /* Header */
@@ -197,11 +191,13 @@
             background: linear-gradient(135deg, #ffffff 0%, #f3f5fd 100%);
             border: 1px solid var(--line);
             border-radius: 24px;
-            padding: 44px 40px 38px;
+            padding: 34px 40px 30px;
             box-shadow: var(--shadow);
-            position: relative;
+            position: sticky;
+            top: 12px;
+            z-index: 10;
             overflow: hidden;
-            margin-bottom: 40px;
+            margin-bottom: 28px;
         }
 
         .cover::after {
@@ -265,6 +261,70 @@
             padding: 32px;
             box-shadow: var(--shadow-sm);
             margin-bottom: 24px;
+        }
+
+        .page-header {
+            position: fixed;
+            top: 0;
+            left: 280px;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            height: 64px;
+            padding: 0 32px;
+            background: #ffffff;
+            border-bottom: 1px solid var(--line);
+            z-index: 60;
+            box-shadow: 0 1px 0 rgba(34, 41, 73, 0.04);
+        }
+
+        @media (max-width: 768px) {
+            .page-header {
+                left: 250px;
+            }
+        }
+
+        @media (max-width: 820px) {
+            .page-header {
+                left: 0;
+            }
+
+            .wrap {
+                padding-top: 72px;
+            }
+        }
+
+        .page-header-title {
+            margin: 0;
+            font-size: 24px;
+            font-weight: 800;
+            color: var(--ink);
+        }
+
+        .page-header-search {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex: 1;
+            max-width: 420px;
+        }
+
+        .page-header-search input {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 999px;
+            border: 1px solid var(--line);
+            background: var(--paper);
+            color: var(--ink);
+            font-size: 14px;
+            outline: none;
+        }
+
+        .page-header-search input:focus {
+            border-color: var(--indigo);
+            box-shadow: 0 0 0 4px rgba(79, 95, 240, 0.08);
         }
 
         .content-header {
@@ -520,16 +580,16 @@
         <aside class="sidebar">
             <div class="sidebar-branding">
                 <h1>🏢 Property Point</h1>
-                <p style="margin: 8px 0 0; font-size: 12px; color: var(--ink-soft); font-weight: 600;">Manual Guide</p>
+                <p style="margin: 8px 0 0; font-size: 12px; color: var(--ink-soft); font-weight: 600;">by R.I.B
+                    Technology</p>
             </div>
 
             <h3 class="sidebar-title">Sections</h3>
             <ul class="sidebar-menu">
                 <li class="sidebar-menu-item">
-                    <button class="sidebar-menu-btn expanded" onclick="toggleSidebarDropdown(this, 'home-submenu')">
+                    <button class="sidebar-menu-btn">
                         <span class="icon">🏠</span>
                         <span class="label">Home Page</span>
-                        <span class="chevron">▾</span>
                     </button>
                     <div class="sidebar-submenu" id="home-submenu">
                         <div class="sidebar-submenu-inner">
@@ -544,10 +604,9 @@
                 </li>
 
                 <li class="sidebar-menu-item">
-                    <button class="sidebar-menu-btn" onclick="toggleSidebarDropdown(this, 'caller-submenu')">
+                    <button class="sidebar-menu-btn">
                         <span class="icon">📞</span>
                         <span class="label">AI Caller</span>
-                        <span class="chevron">▾</span>
                     </button>
                     <div class="sidebar-submenu" id="caller-submenu">
                         <div class="sidebar-submenu-inner">
@@ -558,10 +617,9 @@
                 </li>
 
                 <li class="sidebar-menu-item">
-                    <button class="sidebar-menu-btn" onclick="toggleSidebarDropdown(this, 'dashboard-submenu')">
+                    <button class="sidebar-menu-btn">
                         <span class="icon">📊</span>
                         <span class="label">Dashboard</span>
-                        <span class="chevron">▾</span>
                     </button>
                     <div class="sidebar-submenu" id="dashboard-submenu">
                         <div class="sidebar-submenu-inner">
@@ -581,6 +639,12 @@
         <!-- Main Content -->
         <main class="main-content">
             <div class="wrap">
+                <header class="page-header">
+                    <h1 class="page-header-title">Property Points Guides</h1>
+                    <div class="page-header-search">
+                        <input type="search" placeholder="Search documentation..." aria-label="Search documentation">
+                    </div>
+                </header>
                 <!-- Content Area -->
                 <div id="content-area"></div>
 

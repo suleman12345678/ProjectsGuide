@@ -70,6 +70,26 @@ body {
 .topbar-left { display: flex; align-items: center; gap: 16px; }
 .topbar-right { display: flex; align-items: center; gap: 14px; }
 
+.topbar-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: rgba(59, 130, 246, 0.08);
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.topbar-link:hover {
+  background: rgba(59, 130, 246, 0.16);
+  border-color: rgba(59, 130, 246, 0.24);
+  transform: translateY(-1px);
+}
+
 .logo-mark {
   display: flex; align-items: center; gap: 8px;
   text-decoration: none;
@@ -141,9 +161,13 @@ body {
   top: var(--topbar-h);
   left: 0;
   bottom: 0;
+  height: calc(100vh - var(--topbar-h));
   background: var(--bg-surface);
   border-right: 1px solid var(--border);
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
   display: flex;
   flex-direction: column;
   z-index: 50;
@@ -255,6 +279,24 @@ body {
   background:
     radial-gradient(ellipse 60% 50% at 80% 20%, rgba(245, 158, 11, 0.06) 0%, transparent 60%),
     radial-gradient(ellipse 40% 60% at 10% 80%, rgba(59, 130, 246, 0.04) 0%, transparent 60%);
+}
+
+/* Hero layout is now only the main hero content and screenshot. */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.hero-screenshot {
+  min-height: 320px;
 }
 
 .hero-section::before {
@@ -1359,6 +1401,11 @@ body {
 
 /* ============= RESPONSIVE ============= */
 @media (max-width: 1200px) {
+  .hero-section { padding: 60px 40px 48px; }
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-side { order: 2; }
+  .hero-panel { margin-top: 0; }
+  .hero-screenshot img { height: auto; }
   .doc-section, .hero-section { padding: 52px 44px; }
   .section-divider { margin: 0 36px; }
   .hero-title { font-size: 48px; }
